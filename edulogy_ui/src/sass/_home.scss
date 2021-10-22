@@ -1,0 +1,121 @@
+.home_section {
+  width: 100%;
+  margin: auto;
+  padding-top: 1em;
+  .section_container {
+    background: white;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.home {
+  display: flex;
+  margin: 1em;
+  background: white;
+  .main-view {
+    width: 100%;
+    padding: 1em;
+    padding-bottom: 0;
+    .home_section {
+      h3 {
+        font-size: 16px;
+        font-weight: normal;
+      }
+    }
+    .row {
+      min-height: 3em;
+      border-bottom: rgb(117, 117, 117) solid 1px;
+    }
+    span {
+      font-size: 20px;
+      color: $test-page-main-color;
+      font-weight: bold;
+    }
+    button {
+      width: 8em;
+      height: 2.55em;
+      margin-left: 1em;
+      background: rgb(117, 117, 117);
+      border-radius: 0;
+      color: white;
+    }
+    button:hover {
+      background: $test-page-main-color;
+    }
+  }
+  .sub-view {
+    display: none;
+    padding: 1em;
+    width: 30%;
+    form {
+      margin: auto;
+      margin-top: 50vh;
+      padding-bottom: 2em;
+      background: #0794de;
+      h2 {
+        padding-top: 1em;
+        padding-bottom: 1em;
+        text-transform: uppercase;
+        color: white;
+        font-size: 22px;
+        font-weight: normal;
+        text-align: center;
+        border-bottom: white 1px solid;
+      }
+      input {
+        width: 90%;
+        height: 2.5em;
+        padding-left: 0.5em;
+        background: white;
+        display: block;
+        margin: auto;
+        margin-top: 2.5em;
+        border-radius: 0.25em;
+      }
+      button {
+        width: 90%;
+        height: 2.5em;
+        background: white;
+        margin: auto;
+        display: block;
+        margin-top: 2em;
+      }
+    }
+  }
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .home {
+    margin-left: 0;
+    margin-right: 0;
+    .row {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+      flex-direction: column;
+      .flex {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        button {
+          margin-top: 0.5em;
+        }
+      }
+    }
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .home {
+    margin-left: 0;
+    margin-right: 0;
+    .row {
+      padding-top: 0.5em;
+      padding-bottom: 0.5em;
+    }
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+}

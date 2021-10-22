@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+    text-decoration: none;
+}
+button{
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+  }
+  a{
+    color: #333;
+  }
+ 

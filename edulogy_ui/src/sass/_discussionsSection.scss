@@ -1,0 +1,149 @@
+.all-discussions {
+  padding-top: 2em;
+  background: #fff;
+
+  .section-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4px;
+    margin-right: -4px;
+
+    .all-discussions-area {
+      position: relative;
+      padding-left: 4px;
+      padding-right: 4px;
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
+      border-left: 1px solid #ddd;
+
+      .all-discussions-wrapper {
+        padding: 0 18px;
+
+        .title {
+          font-size: 30px;
+          font-weight: 500;
+          margin-top: 12px;
+        }
+
+        .discussions-quantity {
+          margin: 28px 0 18px 0;
+          font-size: 18px;
+        }
+
+        .divider {
+          border-bottom: 1px solid #ccc;
+          margin-left: -22px;
+          margin-right: -18px;
+        }
+
+        .pagination {
+          display: flex;
+          list-style: none;
+          justify-content: center;
+          margin-top: 20px;
+          margin-bottom: 32px;
+
+          a,
+          a:visited,
+          a:active {
+            color: #6c6c6d;
+            outline: none;
+          }
+
+          .paginated-btn,
+          .prev-btn,
+          .next-btn {
+            a {
+              cursor: pointer;
+              border: 1px solid #d1d5da;
+              font-size: 16px;
+              min-width: 34px;
+              text-align: center;
+              display: block;
+            }
+
+            &:not(.disabled-btn) {
+              a:hover {
+                background: #09a5d4;
+                color: #fff;
+              }
+            }
+          }
+
+          .paginated-btn a {
+            padding: 5px 9px;
+            border-left: none;
+          }
+
+          .prev-btn,
+          .next-btn {
+            a {
+              padding: 5px 10px;
+            }
+          }
+
+          .prev-btn a {
+            min-width: 56px;
+            border-top-left-radius: 4px;
+            border-bottom-left-radius: 4px;
+          }
+
+          .next-btn a {
+            border-top-right-radius: 4px;
+            border-bottom-right-radius: 4px;
+            border-left: none;
+          }
+
+          .disabled-btn a {
+            cursor: default;
+            opacity: 1;
+            color: rgba($color: #c8ccd0, $alpha: 1);
+            background: #fff;
+          }
+
+          .active-btn a {
+            background: #09a5d4;
+            color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .all-discussions {
+    padding-top: 1em;
+    min-height: 100vh;
+
+    #loading-effect {
+      margin-top: 80vh;
+    }
+
+    .section-wrapper {
+      .all-discussions-area {
+        flex: 0 0 100%;
+        max-width: 100%;
+        border-left: none;
+      }
+    }
+  }
+}

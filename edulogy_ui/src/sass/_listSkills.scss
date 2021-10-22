@@ -1,0 +1,70 @@
+.skill {
+  width: 100%;
+  margin: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.skill-card {
+  box-shadow: $shadow;
+  padding: 0.5em;
+  width: 24%;
+  border-radius: 0.25em;
+  background-color: white;
+  z-index: 2;
+  position: relative;
+}
+.skill-card > .name {
+  font-size: 22px;
+  margin-top: 0.5em;
+  margin-bottom: 1em;
+  font-weight: normal;
+  font-style: normal;
+  text-align: center;
+  font-family: "Open Sans", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+  color: #3c3f42;
+}
+.skill-description {
+  text-align: center;
+  font-family: "Open Sans", Arial, Helvetica, "Nimbus Sans L", sans-serif;
+  font-size: 13px;
+  color: #868686;
+  line-height: 1.5em;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+.skill-card img {
+  width: 4.5em;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .skill {
+    display: none;
+  }
+  .skill-card {
+    width: 70vw;
+    margin: auto;
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) and (max-width: 768px) {
+  .skill {
+    display: none;
+  }
+  .skill-card {
+    width: 35vw;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+}

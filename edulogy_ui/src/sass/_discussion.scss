@@ -1,0 +1,206 @@
+.discussion {
+  padding-top: 2em;
+  background: #fff;
+
+  .section-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -4px;
+    margin-right: -4px;
+
+    .discussions-area {
+      position: relative;
+      padding-left: 4px;
+      padding-right: 4px;
+      flex: 0 0 66.66667%;
+      max-width: 66.66667%;
+      border-left: 1px solid #ddd;
+
+      .discussions-wrapper {
+        padding: 0 18px;
+
+        .title {
+          font-size: 26px;
+          font-weight: 500;
+          margin-top: 12px;
+          border-bottom: 1px solid #e2e2e2;
+          padding-bottom: 10px;
+        }
+
+        .reply-card {
+          position: relative;
+          display: none;
+          margin: 36px 84px 0 50px;
+
+          &.active {
+            display: block;
+          }
+
+          [contentEditable="true"]:empty:before {
+            content: attr(data-placeholder);
+            color: #b3b3b3;
+            cursor: text;
+          }
+
+          .reply-typing {
+            border-bottom: 1px solid #b3b3b3;
+            min-height: 24px;
+            width: 100%;
+            line-height: 20px;
+            padding-left: 30px;
+          }
+
+          .under-reply {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 8px;
+            font-size: 12px;
+            position: relative;
+
+            .uploaded-images {
+              display: flex;
+              flex-wrap: wrap;
+              flex-grow: 1;
+              margin-left: -2px;
+              margin-right: 20px;
+
+              .uploaded-img {
+                background-color: #dbdbdb;
+                margin: 0px 2px 9px 2px;
+                border-radius: 10px;
+                padding: 2px 0 2px 8px;
+                font-size: 12px;
+                display: flex;
+                align-items: center;
+
+                .img-name {
+                  line-height: 13px;
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  max-width: 176px;
+                  white-space: nowrap;
+                }
+
+                .remove-img-icon {
+                  cursor: pointer;
+                  width: 16px;
+                  height: 16px;
+                  margin: 0 3px 0 1px;
+                }
+              }
+            }
+
+            .btn-group {
+              display: flex;
+              text-transform: uppercase;
+
+              .cancel-btn,
+              .submit-btn {
+                cursor: pointer;
+                min-width: 60px;
+                text-align: center;
+                border-radius: 2px;
+                height: 28px;
+                line-height: 28px;
+                padding: 0 10px;
+                white-space: nowrap;
+              }
+
+              .cancel-btn {
+                color: #949494;
+                border: 1px solid #b3b3b3;
+
+                &:hover {
+                  background-color: #e6e4e4;
+                }
+              }
+
+              .submit-btn {
+                color: #fff;
+                background: #b3b3b3;
+                border: 1px solid #b3b3b3;
+                margin-left: 6px;
+
+                &:hover {
+                  background-color: #908f8f;
+                }
+              }
+            }
+          }
+
+          input[type="file"] {
+            display: none;
+          }
+
+          .image-upload {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 0;
+            height: 20px;
+            cursor: pointer;
+
+            .image-upload-icon {
+              width: 20px;
+              height: 20px;
+              color: #545454;
+            }
+
+            &:hover .image-upload-icon {
+              opacity: 0.7;
+            }
+          }
+        }
+
+        .replies-quantity {
+          margin-top: 20px;
+          margin-left: 4px;
+          margin-bottom: 22px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .discussion {
+    padding-top: 1em;
+    min-height: 100vh;
+
+    #loading-effect {
+      margin-top: 80vh;
+    }
+
+    .section-wrapper {
+      .discussions-area {
+        flex: 0 0 100%;
+        max-width: 100%;
+        border-left: none;
+
+        .discussion-detail-card .author {
+          margin-left: 20px;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+.floating-button {
+  display: none;
+  cursor: pointer;
+  width: 56px;
+  height: 56px;
+  line-height: 56px;
+  font-size: 26px;
+  border-radius: 50%;
+  background: #09a5d4;
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2;
+  transition: 0.2s;
+  box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+
+  &:hover {
+    background: #0991ba;
+  }
+
+  &.active {
+    transform: rotate(45deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .floating-button {
+    display: block;
+  }
+}

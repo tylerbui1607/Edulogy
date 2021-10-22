@@ -1,0 +1,92 @@
+.discussion-card {
+  display: flex;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 12px 0;
+
+  .author-and-replies {
+    text-align: center;
+
+    .author-avatar {
+      position: relative;
+      width: 36px;
+      height: 36px;
+      background-color: #c6bbbb;
+      margin: 0 auto;
+      line-height: 36px;
+      border-radius: 50%;
+
+      &.pawn {
+        background-color: #d3f6fc;
+      }
+
+      &.knight {
+        background-color: #f3dff6;
+      }
+
+      &.bishop {
+        background-color: #fcedd3;
+      }
+
+      .author-badge-frame {
+        position: absolute;
+        top: -7px;
+        left: -6.4px;
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    .author-name {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #09a5d4;
+    }
+
+    .reply-quantity {
+      margin-top: 8px;
+      font-size: 22px;
+    }
+
+    .reply-quantity-suffix {
+      font-size: 14px;
+      margin-top: 2px;
+    }
+  }
+
+  .content-detail {
+    margin-left: 20px;
+
+    .discussion-title {
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      line-height: 28px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      text-overflow: ellipsis;
+      text-decoration: none;
+
+      &,
+      &:visited,
+      &:active {
+        color: #0987ad;
+      }
+
+      &:hover {
+        color: #08aee0;
+      }
+    }
+
+    .discussion-content {
+      margin-top: 4px;
+      line-height: 20px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      text-overflow: ellipsis;
+    }
+  }
+}

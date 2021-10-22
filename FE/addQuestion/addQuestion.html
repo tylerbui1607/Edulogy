@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add question</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <form onsubmit="return false;" style="width: 50%; margin: auto; margin-top: 2em;">
+        <div class="form-group">
+            <label for="questionContent">Question content</label>
+            <input type="text" class="form-control" id="questionContent" placeholder="Question content">
+        </div>
+        <div class="form-group">
+            <label for="questionContent">Explaination</label>
+            <input type="text" class="form-control" id="questionExplaination" placeholder="Question explaination">
+        </div>
+        <div class="form-group">
+            <div style="display: flex; justify-content: space-between; width: 50%;">
+                <label for="inputAddress">Answer A</label>
+                <div>
+                    <label for="isTrueCheckboxA">isTrue</label>
+                    <input type="checkbox" name="isTrueCheckbox" id="isTrueCheckboxA">
+                </div>
+            </div>
+            <input type="text" class="form-control" id="answerAContent" placeholder="content">
+        </div>
+        <div class="form-group">
+            <div style="display: flex; justify-content: space-between; width: 50%;">
+                <label for="inputAddress">Answer B</label>
+                <div>
+                    <label for="isTrueCheckboxB">isTrue</label>
+                    <input type="checkbox" name="isTrueCheckbox" id="isTrueCheckboxB">
+                </div>
+            </div>
+            <input type="text" class="form-control" id="answerBContent" placeholder="content">
+        </div>
+        <div class="form-group">
+            <div style="display: flex; justify-content: space-between; width: 50%;">
+                <label for="inputAddress">Answer C</label>
+                <div>
+                    <label for="isTrueCheckboxC">isTrue</label>
+                    <input type="checkbox" name="isTrueCheckbox" id="isTrueCheckboxC">
+                </div>
+            </div>
+            <input type="text" class="form-control" id="answerCContent" placeholder="content">
+        </div>
+        <div class="form-group">
+            <div style="display: flex; justify-content: space-between; width: 50%;">
+                <label for="inputAddress">Answer D</label>
+                <div>
+                    <label for="isTrueCheckboxD">isTrue</label>
+                    <input type="checkbox" name="isTrueCheckbox" id="isTrueCheckboxD">
+                </div>
+            </div>
+            <input type="text" class="form-control" id="answerDContent" placeholder="content">
+        </div>
+        <button type="btn" class="btn btn-primary" onclick="addQ()">Add</button>
+    </form>
+    <script src="FE.js"></script>
+</body>
+
+</html>

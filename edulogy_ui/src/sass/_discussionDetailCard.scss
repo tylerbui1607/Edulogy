@@ -1,0 +1,117 @@
+.discussion-detail-card {
+  display: flex;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 12px 0;
+
+  .voting-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: -10px;
+    margin-top: -16px;
+
+    .up-vote,
+    .down-vote {
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      color: #c4c4c4;
+
+      &.pressed {
+        color: #7cbbd8e0;
+      }
+
+      &.disabled {
+        cursor: default;
+      }
+    }
+
+    .up-vote {
+      margin-bottom: -10px;
+    }
+
+    .vote-counter {
+    }
+
+    .down-vote {
+      margin-top: -10px;
+    }
+  }
+
+  .comment-content {
+    margin-left: 10px;
+    text-align: justify;
+    flex-grow: 1;
+    white-space: pre-line;
+
+    .images-content {
+      margin-left: -10px;
+      margin-right: -10px;
+
+      img {
+        display: block;
+        margin: 12px auto;
+        max-width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+      }
+    }
+
+    .reply {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 15px;
+
+      .reply-btn {
+        width: 25px;
+        height: 25px;
+        color: #c4c4c4;
+        cursor: pointer;
+
+        &:hover {
+          color: rgb(158, 158, 158);
+        }
+      }
+    }
+  }
+
+  .author {
+    text-align: center;
+    margin-left: 30px;
+    margin-right: 20px;
+
+    .author-avatar {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      margin: 0 auto;
+      line-height: 32px;
+      border-radius: 50%;
+
+      &.pawn {
+        background-color: #d3f6fc;
+      }
+
+      &.knight {
+        background-color: #f3dff6;
+      }
+
+      &.bishop {
+        background-color: #fcedd3;
+      }
+
+      .author-badge-frame {
+        position: absolute;
+        top: -6px;
+        left: -6px;
+        width: 44px;
+        height: 44px;
+      }
+    }
+
+    .author-name {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #09afd4;
+    }
+  }
+}
