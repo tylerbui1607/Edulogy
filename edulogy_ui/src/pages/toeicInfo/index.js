@@ -1,1 +1,1 @@
-export * from "./toeicInfo";
+export * from "./ToeicInfo";

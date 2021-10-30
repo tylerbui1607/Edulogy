@@ -1,32 +1,34 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { HomePage } from "./pages/homPage";
-import { AdminPage } from "./pages/adminPage";
-import { TestPage } from "./pages/testPage";
-import { ToeicInfoPage } from "./pages/toeicInfo";
-import { ListTestPage } from "./pages/listtestPage";
-import { DiscussionsPage } from "./pages/discussionsPage";
-import { DiscussionDetailPage } from "./pages/discussionDetailPage";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { HomePage } from "./pages/Home";
+import { TestPage } from "./pages/Test";
+import { AdminPage } from "./pages/Admin";
+import { Popup } from "./components/Popup";
+import { Footer } from "./components/Footer";
+import { Header } from "./components/Header";
+import { ToeicInfoPage } from "./pages/ToeicInfo";
+import { ListTestsPage } from "./pages/ListTests";
 import "./App.css";
-
 const queryClient = new QueryClient();
-
 function App() {
   return (
-    <BrowserRouter>
-      <QueryClientProvider client={queryClient}>
-        <Switch>
-          <Route path="/" exact component={HomePage} />
-          <Route path="/de-thi" component={ListTestPage} />
-          <Route path="/kiem-tra/:id" component={TestPage} />
-          <Route path="/thong-tin" component={ToeicInfoPage} />
-          <Route path="/thao-luan" component={DiscussionsPage} />
-          <Route path="/chi-tiet-thao-luan/:id" component={DiscussionDetailPage} />
-          <Route path="/quan-ly" component={AdminPage} />
-        </Switch>
-      </QueryClientProvider>
-    </BrowserRouter>
+    <React.Fragment>
+      <Header />
+      <BrowserRouter>
+        <QueryClientProvider client={queryClient}>
+          <Switch>
+            <Route path="/de-thi" component={ListTestsPage} />
+            <Route path="/kiem-tra/:id" component={TestPage} />
+            <Route path="/thong-tin" component={ToeicInfoPage} />
+            <Route path="/quan-ly" component={AdminPage} />
+            <Route path="/" exact component={HomePage} />
+          </Switch>
+        </QueryClientProvider>
+      </BrowserRouter>
+      <Popup />
+      <Footer />
+    </React.Fragment>
   );
 }
 

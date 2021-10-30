@@ -1,18 +1,9 @@
-import ToeicLocation from "./child/toeicLocation";
-import ToeicProcess from "./child/toeicProcess";
-import ToeicOutcome from "./child/toeicOutcome";
-import Nav from "../../common/nav";
-import Footer from "../../common/footer";
-import MenuSlider from "../../common/menuSidebar";
-import Popup from "../../components/popup";
-import React, { useState } from "react";
-
+import ToeicLocation from "./child/Location";
+import ToeicProcess from "./child/Process";
+import ToeicOutcome from "./child/Outcome";
+import React, { useEffect, useState } from "react";
 function ToeicInfoPage() {
-
-  document.title = "Thông tin Toeic"
-
   const [customStyle, setCustomStyle] = useState({ location: "block", process: "none", output: "none" });
-
   function handleChangeTab(tab) {
     let cStyle = { ...customStyle };
     cStyle.location = "none";
@@ -21,10 +12,11 @@ function ToeicInfoPage() {
     cStyle[tab] = "block";
     setCustomStyle(cStyle);
   }
-
+  useEffect(() => {
+    document.title = "Thông tin Toeic"
+  }, [])
   return (
     <React.Fragment>
-      <Nav />
       <div className="toeic-info">
         <div className="tab-container">
           <button onClick={() => handleChangeTab("location")}>Địa điểm thi Toeic</button>
@@ -37,11 +29,7 @@ function ToeicInfoPage() {
           <ToeicOutcome display={customStyle.output} />
         </div>
       </div>
-      <Footer />
-      <Popup />
-      <MenuSlider />
     </React.Fragment>
   )
 }
-
 export { ToeicInfoPage }

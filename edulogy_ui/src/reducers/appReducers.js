@@ -1,51 +1,65 @@
-import { constants } from "../constants";
+import { constants as c } from "../constants";
 
-const initialState = { popupType: "", status: constants.LOADING };
+const initialState = {
+  popup: {
+    type: c.NONE,
+  },
+  popupType: "",
+  status: c.LOADING,
+};
 
 export function application(state = initialState, action) {
+  console.log(action);
   switch (action.type) {
-    case constants.POPUP_PROFILE:
-      return{
+    case c.CHANGE_POPUP:
+      return {
         ...state,
-        popupType: "profile"
-      }
-    case constants.POPUP_FORGOTPASS:
+        popup: {
+          type: action.popupType,
+        },
+      };
+    case c.POPUP_PROFILE:
+      return {
+        ...state,
+        popupType: "profile",
+      };
+    case c.POPUP_FORGOTPASS:
       return {
         ...state,
         popupType: "forgotpass",
       };
-    case constants.POPUP_LOGIN:
+    case c.POPUP_LOGIN:
       return {
         ...state,
         popupType: "login",
       };
-    case constants.LOGIN_SUCCESS:
-    case constants.REGISTER_SUCCESS:
+    case c.LOGIN_SUCCESS:
+    case c.REGISTER_SUCCESS:
       return {
         ...state,
         popupType: "",
       };
-    case constants.HIDE_POPUP:
+    case c.HIDE_POPUP:
       return {
         ...state,
         popupType: "",
       };
-    case constants.GET_HOME_SUCCESS:
+    case c.GET_HOME_SUCCESS:
       return {
         ...state,
-        status: constants.SUCCESS,
+        status: c.SUCCESS,
         homeInfo: action.info,
       };
-    case constants.GET_HOME_FAILURE:
-    case constants.GET_ADMIN_FAILURE:
+    case c.GET_HOME_FAILURE:
+    case c.GET_ADMIN_FAILURE:
       return {
         ...state,
-        status: constants.FAILURE,
+        status: c.FAILURE,
       };
-    case constants.GET_ADMIN_SUCCESS:
+    case c.GET_ADMIN_SUCCESS:
       return {
         ...state,
-        status: constants.SUCCESS,
+        status: c.SUCCESS,
         adminInfo: action.info,
       };
     default:

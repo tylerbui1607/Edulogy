@@ -12,50 +12,41 @@
   overflow: hidden;
   box-shadow: $shadow;
 }
-
 .login-container > .img-container {
   width: 50%;
   display: block;
   position: relative;
   background-color: $background-blue;
 }
-
 .login-container > .form-container {
   width: 50%;
   position: relative;
 }
-
 .login-container > .img-container > img {
   display: block;
   width: 100%;
   max-height: 100%;
 }
-
 .login-container > .form-container > .form {
   width: 100%;
 }
-
 .form h2 {
   margin-bottom: 0.5em;
 }
-
 .form > .input-container {
   width: 80%;
   margin: auto;
 }
-
 .form > .input-container > a {
   color: $blue;
   display: block;
   margin-top: 1em;
   font-size: 0.75em;
 }
-
 .form > .input-container > div {
   margin-top: 1em;
   font-size: 0.75em;
 }
-
 .form > .input-container > div button {
   color: $blue;
   font-size: 1em;
