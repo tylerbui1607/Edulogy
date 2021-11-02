@@ -279,7 +279,8 @@
     border-radius: 0;
     color: white;
   }
-  button:hover {
+  button:hover,
+  button.active {
     background: $test-page-main-color;
   }
   .list-tests {

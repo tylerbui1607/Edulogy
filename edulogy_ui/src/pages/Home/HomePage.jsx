@@ -34,14 +34,17 @@ function HomePage() {
               <span>LUYỆN THI TOEIC MIỄN PHÍ</span>
               <div className="flex">
                 <button
+                  className={currentLevel === "level1" ? "active" : ""}
                   onClick={() => handleChangeLevel("level1")}>
                   Level 250 - 500
                 </button>
                 <button
+                  className={currentLevel === "level2" ? "active" : ""}
                   onClick={() => handleChangeLevel("level2")}>
                   Level 500 - 750
                 </button>
                 <button
+                  className={currentLevel === "level3" ? "active" : ""}
                   onClick={() => handleChangeLevel("level3")}>
                   Level 750 - 990
                 </button>

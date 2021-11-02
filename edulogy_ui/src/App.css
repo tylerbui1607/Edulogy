@@ -403,9 +403,6 @@ ol {
   line-height: 4em;
   display: block; }
 
-.nav .dropdown .dropdown-btn:hover {
-  color: #e0e0e0; }
-
 .dropdown-list {
   width: auto;
   z-index: 2;
@@ -972,7 +969,8 @@ button.dropdown-item {
     background: #757575;
     border-radius: 0;
     color: white; }
-  .list-test-page button:hover {
+  .list-test-page button:hover,
+  .list-test-page button.active {
     background: #00949e; }
   .list-test-page .list-tests {
     width: 100%;
@@ -1265,7 +1263,8 @@ button.dropdown-item {
       background: #757575;
       border-radius: 0;
       color: white; }
-    .home .main-view button:hover {
+    .home .main-view button:hover,
+    .home .main-view button.active {
       background: #00949e; }
   .home .sub-view {
     display: none;

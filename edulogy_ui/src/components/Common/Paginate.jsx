@@ -4,7 +4,7 @@ export default function Paginate(props) {
     listPage[i] = i + 1;
   }
   return (
-    <div className="paginate">
+    <div className="paginate" style={{ display: props.totalPage > 1 ? "flex" : "none" }}>
       {
         listPage.map((v, i) => {
           let customClass = v === props.currentPage ? "page-index index-active" : "page-index"
