@@ -27,7 +27,7 @@
   "scripts": {
     "start": "set PORT=3001 && react-scripts start",
     "build": "react-scripts build",
-    "watch": "node-sass -w src/sass -o src",
+    "watch": "node-sass -w src/scss -o src",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

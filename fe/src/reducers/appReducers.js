@@ -9,7 +9,6 @@ const initialState = {
 };
 
 export function application(state = initialState, action) {
-  console.log(action);
   switch (action.type) {
     case c.CHANGE_POPUP:
       return {

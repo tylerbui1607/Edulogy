@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { HomePage } from "./pages/Home";
 import { TestPage } from "./pages/Test";
+import { ForumPage } from "./pages/Forum";
 import { AdminPage } from "./pages/Admin";
 import { Popup } from "./components/Popup";
 import { Footer } from "./components/Footer";
@@ -22,6 +23,7 @@ function App() {
             <Route path="/kiem-tra/:id" component={TestPage} />
             <Route path="/thong-tin" component={ToeicInfoPage} />
             <Route path="/quan-ly" component={AdminPage} />
+            <Route path="/forum" component={ForumPage} />
             <Route path="/" exact component={HomePage} />
           </Switch>
         </QueryClientProvider>

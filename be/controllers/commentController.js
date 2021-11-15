@@ -1,8 +1,6 @@
 const { Comment } = require("../models/commentModel");
 const base = require("./baseController");
-
 exports.addOne = base.addOne(Comment);
-
 exports.likeOne = async (req, res, next) => {
   try {
     let comment = await Comment.findById(req.params.id);
@@ -35,7 +33,6 @@ exports.likeOne = async (req, res, next) => {
     });
   }
 };
-
 exports.dislikeOne = async (req, res, next) => {
   try {
     let comment = await Comment.findById(req.params.id);
@@ -69,7 +66,6 @@ exports.dislikeOne = async (req, res, next) => {
     });
   }
 };
-
 exports.getOne = async (req, res, next) => {
   try {
     let comment = await Comment.findById(req.params.id)

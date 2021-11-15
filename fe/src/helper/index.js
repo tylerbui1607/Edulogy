@@ -52,4 +52,15 @@ function toggleSubitem() {
   else subitem.style.height = "0";
 }
 
-export { showScore, showSidebar, closeSidebar, toggleSubitem, showStatus };
+function randomHexColor() {
+  var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+  return "#" + randomColor;
+}
+export {
+  showScore,
+  showSidebar,
+  closeSidebar,
+  toggleSubitem,
+  showStatus,
+  randomHexColor,
+};

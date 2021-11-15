@@ -10,6 +10,7 @@ const testRoutes = require("./routes/testRoute");
 const problemRoutes = require("./routes/problemRoute");
 const commentRoutes = require("./routes/commentRoute");
 const siteRoutes = require("./routes/siteRoute");
+const postRoutes = require("./routes/postRoute");
 const db = require("./config/database");
 
 const app = express();
@@ -39,6 +40,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/users", userRoutes);
 app.use("/api/questions", questionRoutes);
 app.use("/api/tests", testRoutes);
+app.use("/api/posts", postRoutes);
 app.use("/api/problems", problemRoutes);
 app.use("/api/comments", commentRoutes);
 app.use("/api", siteRoutes);

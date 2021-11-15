@@ -127,6 +127,30 @@
   margin-right: auto;
   display: block;
 }
+.banner {
+  width: 100%;
+  height: fit-content;
+  position: relative;
+  .img-container {
+    display: block;
+    width: 100%;
+    padding-top: 23.5%; /* 1:1 Aspect Ratio */
+    position: relative;
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .mobile-display {
+      display: none;
+    }
+  }
+}
 @media only screen and (max-width: 600px) {
   .home {
     margin-left: 0;
@@ -154,6 +178,11 @@
     margin-top: 1em;
     margin-bottom: 1em;
   }
+  .banner {
+    .img-container {
+      padding-top: 37.5%;
+    }
+  }
 }
 @media only screen and (min-width: 600px) and (max-width: 768px) {
   .home {
@@ -170,6 +199,12 @@
   .skill-card {
     width: 35vw;
   }
+  .banner > div {
+    box-shadow: inset 0 0 10em black;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
+  .banner > div {
+    box-shadow: inset 0 0 15em black;
+  }
 }
