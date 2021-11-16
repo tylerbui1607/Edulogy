@@ -1,7 +1,10 @@
 export default function Post(props) {
-  const { title, dislike, like, imgs, content, view, user, comments } = props;
+  const { title, dislike, like, imgs, content, view, user, comments, _id, date } = props;
+  function handleClick() {
+    window.location.href = `/bai-viet/${_id}`;
+  }
   return (
-    <div className="post">
+    <div className="post" onClick={handleClick}>
       <div className="show_flex w100">
         <div className="post__avt" >
           {user.name[0]}
@@ -17,7 +20,7 @@ export default function Post(props) {
             <div className="show_flex">
               <span><i className="far fa-calendar-alt"></i></span>
               &nbsp;
-              <p>15/11/2021</p>
+              <p>{date}</p>
             </div>
           </div>
         </div>
@@ -36,8 +39,7 @@ export default function Post(props) {
           </div>
         </div>
       </div>
-      <div className="post__preview">
-        {content}
+      <div className="post__preview" dangerouslySetInnerHTML={{ __html: content }}>
       </div>
     </div>
   )

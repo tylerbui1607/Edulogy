@@ -1,5 +1,4 @@
 import { constants } from "../constants";
-
 function login(email, password) {
   console.log("user service");
   let requestOption = {
@@ -22,7 +21,6 @@ function login(email, password) {
       return json;
     });
 }
-
 function register(name, email, password) {
   console.log("user service");
   let requestOption = {
@@ -45,12 +43,10 @@ function register(name, email, password) {
       return json;
     });
 }
-
 function logout() {
   localStorage.removeItem("user");
   localStorage.removeItem("token");
 }
-
 function update(name, email, id) {
   let requestOption = {
     method: "PUT",

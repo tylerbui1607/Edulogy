@@ -96,7 +96,8 @@
   width: 25%;
 }
 .logo img {
-  width: 120px;
+  object-fit: contain;
+  height: 50px;
 }
 .dropdown-container {
   margin-left: auto;

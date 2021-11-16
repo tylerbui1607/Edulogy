@@ -19,7 +19,7 @@ function getAllPosts() {
 }
 function getTrendingPosts() {
   return (dispatch) => {
-    postServices.getAllPosts().then((res) => {
+    postServices.getTrendingPosts().then((res) => {
       if (res.status === "success") {
         dispatch(success(res.doc));
         return;
@@ -34,4 +34,61 @@ function getTrendingPosts() {
     return { type: c.GET_TRENDING_POSTS_FAILURE };
   }
 }
-export const postActions = { getAllPosts, getTrendingPosts };
+function createPost(info) {
+  return (dispatch) => {
+    postServices.createPost(info).then((res) => {
+      if (res.status === "success") {
+        dispatch(success(res.doc));
+        return;
+      }
+      dispatch(failure());
+    });
+  };
+  function success(data) {
+    return { type: c.CREATE_NEW_POST_SUCCESS };
+  }
+  function failure() {
+    return { type: c.CREATE_NEW_POST_FAILURE };
+  }
+}
+function getPostById(id) {
+  return (dispatch) => {
+    postServices.getPostById(id).then((res) => {
+      if (res.status === "success") {
+        dispatch(success(res.doc));
+        return;
+      }
+      dispatch(failure());
+    });
+  };
+  function success(data) {
+    return { type: c.GET_POST_SUCCESS, data };
+  }
+  function failure() {
+    return { type: c.GET_POST_FAILURE };
+  }
+}
+function commentPost(id, info) {
+  return (dispatch) => {
+    postServices.commentPost(id, info).then((res) => {
+      if (res.status === "success") {
+        dispatch(success(res.doc));
+        return;
+      }
+      dispatch(failure());
+    });
+  };
+  function success(data) {
+    return { type: c.COMMENT_POST_SUCCESS, data };
+  }
+  function failure() {
+    return { type: c.COMMENT_POST_FAILURE };
+  }
+}
+export const postActions = {
+  getAllPosts,
+  getTrendingPosts,
+  createPost,
+  getPostById,
+  commentPost,
+};

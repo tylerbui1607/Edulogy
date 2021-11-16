@@ -8,6 +8,10 @@ const initialState = {
     data: [],
     status: c.LOADING,
   },
+  info: {
+    data: {},
+    status: c.LOADING,
+  },
 };
 export function post(state = initialState, action) {
   switch (action.type) {
@@ -42,6 +46,33 @@ export function post(state = initialState, action) {
           data: [],
           status: c.FAILURE,
         },
+      };
+    case c.GET_POST_SUCCESS:
+      return {
+        ...state,
+        info: {
+          status: c.SUCCESS,
+          data: action.data,
+        },
+      };
+    case c.GET_POST_FAILURE:
+      return {
+        ...state,
+        info: {
+          status: c.FAILURE,
+          data: {},
+        },
+      };
+    case c.CREATE_NEW_POST_SUCCESS:
+    case c.COMMENT_POST_SUCCESS: {
+      window.location.reload();
+      return {
+        ...state,
+      };
+    }
+    case c.CREATE_NEW_POST_FAILURE:
+      return {
+        ...state,
       };
     default:
       return state;

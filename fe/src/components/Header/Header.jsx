@@ -27,12 +27,12 @@ function Header(props) {
         <div className="nav container" id="header">
           <div className="logo">
             <a href="/">
-              <img src="/img/logo_trans.png" alt="" />
+              <img src="https://i.ibb.co/vLDR33T/cloud-logo-vector-design-template-260nw-1812087388.jpg" alt="" />
             </a>
           </div>
           <div className="dropdown-container">
             <div className="dropdown">
-              <a href="/de-thi" className="dropdown-btn">Kiểm tra +</a>
+              <a href="/de-thi" className="dropdown-btn">Đề kiểm tra +</a>
               <div className="dropdown-list">
                 <a href="/de-thi?type=mini" className="dropdown-item">Mini test</a>
                 <a href="/de-thi?type=part1" className="dropdown-item">Part I:  Hình ảnh</a>
@@ -44,7 +44,7 @@ function Header(props) {
               <a href="/thong-tin" className="dropdown-btn">Thông tin Toeic</a>
             </div>
             <div className="dropdown">
-              <a href="/forum" className="dropdown-btn">Forum</a>
+              <a href="/forum" className="dropdown-btn">Diễn đàng</a>
             </div>
             <div className="dropdown mobile-display">
               <button onClick={handleShowSidebar}>

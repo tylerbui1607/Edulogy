@@ -1,11 +1,11 @@
-export default function TrendingPost(props) {
+export default function RelatedPost(props) {
   const { title, content, user, date } = props;
   return (
-    <div className="trending-post show_flex">
-      <div className="trending-post__avt">
+    <div className="related-post show_flex">
+      <div className="related-post__avt">
         {user.name[0]}
       </div>
-      <div className="trending-post__info">
+      <div className="related-post__info">
         <h4>{title}</h4>
         <div className="content" dangerouslySetInnerHTML={{ __html: content }}>
         </div>

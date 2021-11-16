@@ -45,16 +45,31 @@ function closeSidebar() {
     }
   });
 }
-
 function toggleSubitem() {
   const subitem = document.getElementById("sidebarSubitem");
   if (subitem.offsetHeight === 0) subitem.style.height = "9em";
   else subitem.style.height = "0";
 }
-
 function randomHexColor() {
   var randomColor = Math.floor(Math.random() * 16777215).toString(16);
   return "#" + randomColor;
+}
+function formatDate(date) {
+  var year = date.getFullYear();
+  var month = (1 + date.getMonth()).toString();
+  month = month.length > 1 ? month : "0" + month;
+  var day = date.getDate().toString();
+  day = day.length > 1 ? day : "0" + day;
+  var hour = date.getHours().toString();
+  hour = hour.length > 1 ? hour : "0" + hour;
+  var minute = date.getMinutes().toString();
+  minute = minute.length > 1 ? minute : "0" + minute;
+  var second = date.getSeconds().toString();
+  second = second.length > 1 ? second : "0" + second;
+  return `${day}/${month}/${year} ${hour}:${minute}:${second}`;
+}
+function getCurrentDate() {
+  return formatDate(new Date()).split(" ")[0];
 }
 export {
   showScore,
@@ -63,4 +78,6 @@ export {
   toggleSubitem,
   showStatus,
   randomHexColor,
+  formatDate,
+  getCurrentDate,
 };
