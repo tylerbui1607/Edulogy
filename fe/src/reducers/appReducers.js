@@ -3,6 +3,10 @@ import { constants as c } from "../constants";
 const initialState = {
   popup: {
     type: c.NONE,
+    msg: "Thêm test thành công!",
+    additionalInfo: {
+      status: c.LOADING,
+    },
   },
   popupType: "",
   status: c.LOADING,
@@ -15,6 +19,8 @@ export function application(state = initialState, action) {
         ...state,
         popup: {
           type: action.popupType,
+          msg: action.msg,
+          additionalInfo: action.additionalInfo,
         },
       };
     case c.POPUP_PROFILE:

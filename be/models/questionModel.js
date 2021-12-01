@@ -36,9 +36,9 @@ const validate = (question) => {
     content: joi.string().min(10),
     explanation: joi.string().min(10),
     answers: joi.array().required(),
+    part: joi.number().min(1).max(7).required(),
     img: joi.string(),
     script: joi.string(),
-    part: joi.number().min(1).max(7).required(),
     type: joi.string(),
   });
   return schema.validate(question);

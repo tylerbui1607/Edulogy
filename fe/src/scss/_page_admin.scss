@@ -5,7 +5,7 @@
   overflow: hidden;
   .admin-section {
     width: 95%;
-    height: calc(100% - 6em);
+    height: calc(100% - 8em);
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -31,7 +31,8 @@
       h3 {
         text-align: center;
       }
-      input {
+      input,
+      select {
         display: block;
         height: 2.5em;
         line-height: 2.5em;
@@ -52,7 +53,8 @@
         line-height: normal;
       }
       input[type="text"],
-      input[type="number"] {
+      input[type="number"],
+      select {
         border: 1px solid #333;
       }
       label {
@@ -70,6 +72,12 @@
       }
       > .row {
         margin-top: 0.5em;
+      }
+      select {
+        option {
+          padding: 5px 0;
+          font-size: 16px;
+        }
       }
     }
     .table-view {
@@ -208,6 +216,7 @@
   .report-view {
     width: 95%;
     margin: auto;
+    margin-top: 1em;
     height: 8em;
     display: flex;
     justify-content: space-between;

@@ -29,8 +29,8 @@ function getAdminInfo() {
     return { type: c.GET_ADMIN_FAILURE, message };
   }
 }
-function changePopup(popupType) {
-  return { type: c.CHANGE_POPUP, popupType };
+function changePopup(popupType, msg = "", additionalInfo = {}) {
+  return { type: c.CHANGE_POPUP, popupType, msg, additionalInfo };
 }
 function hidePopup() {
   return { type: c.HIDE_POPUP };

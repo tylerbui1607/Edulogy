@@ -8,12 +8,13 @@ export function authentication(state = initialState, action) {
   switch (action.type) {
     case constants.LOGIN_SUCCESS:
     case constants.UPDATE_SUCCESS:
-      localStorage.setItem("user",JSON.stringify(action.user))
+      localStorage.setItem("user", JSON.stringify(action.user));
+      setTimeout(() => window.location.reload(), 1000);
       return {
         user: action.user,
       };
     case constants.REGISTER_SUCCESS:
-      console.log(action.user)
+      console.log(action.user);
       return {
         loggedIn: true,
         user: action.user,

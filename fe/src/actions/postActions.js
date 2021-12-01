@@ -41,14 +41,14 @@ function createPost(info) {
         dispatch(success(res.doc));
         return;
       }
-      dispatch(failure());
+      dispatch(failure(res.message));
     });
   };
   function success(data) {
     return { type: c.CREATE_NEW_POST_SUCCESS };
   }
-  function failure() {
-    return { type: c.CREATE_NEW_POST_FAILURE };
+  function failure(msg) {
+    return { type: c.CREATE_NEW_POST_FAILURE, msg };
   }
 }
 function getPostById(id) {

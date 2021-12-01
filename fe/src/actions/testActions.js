@@ -1,6 +1,7 @@
 import { testService } from "../services/testServices";
 import { constants as c } from "../constants";
 import { showStatus } from "../helper";
+import { appActions } from "./appActions";
 
 function getTestById(id) {
   return (dispatch) => {
@@ -36,12 +37,19 @@ function addTest(test) {
   return (dispatch) => {
     testService.addTest(test).then((res) => {
       if (res.status === "success") {
-        showStatus("success", "Thêm test thành công !");
+        dispatch(
+          appActions.changePopup(c.MESSAGE_POPUP, "Thêm test thành công!", {
+            status: c.SUCCESS,
+            willReload: true,
+          })
+        );
         dispatch(success());
       } else {
-        showStatus(
-          "fail",
-          "Có lỗi xảy ra vui lòng thử lại sau !<br/>" + res.message
+        dispatch(
+          appActions.changePopup(c.MESSAGE_POPUP, res.message, {
+            status: c.FAILURE,
+            willReload: true,
+          })
         );
         dispatch(failure());
       }

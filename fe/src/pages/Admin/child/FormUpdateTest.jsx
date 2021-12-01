@@ -1,6 +1,5 @@
 import React from "react"
 export default function UpdateTestForm(props) {
-  console.log(props.updateInfo);
   return (
     <div className="info-popup">
       <form id="updateForm" encType="multipart/form-data">

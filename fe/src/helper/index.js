@@ -1,3 +1,4 @@
+import * as XLSX from "xlsx";
 function showScore(s) {
   document.getElementById("modal").classList.add("show_flex");
   document.getElementById("scorePopup").classList.add("show_flex");
@@ -71,6 +72,34 @@ function formatDate(date) {
 function getCurrentDate() {
   return formatDate(new Date()).split(" ")[0];
 }
+async function xlsxToJson(file) {
+  return new Promise((resolve, reject) => {
+    var reader = new FileReader();
+    var result = [];
+    reader.onload = function (event) {
+      var data = event.target.result;
+      var workbook = XLSX.read(data, {
+        type: "binary",
+      });
+      workbook.SheetNames.forEach(function (sheetName) {
+        console.log(workbook.Sheets[sheetName]);
+        var XL_row_object = XLSX.utils.sheet_to_row_object_array(
+          workbook.Sheets[sheetName]
+        );
+        if (XL_row_object.length > 0) {
+          result = XL_row_object;
+          console.log(result);
+          resolve(result);
+        }
+      });
+    };
+    reader.onerror = function (event) {
+      console.error("File could not be read! Code " + event.target.error.code);
+      resolve([]);
+    };
+    reader.readAsBinaryString(file);
+  });
+}
 export {
   showScore,
   showSidebar,
@@ -80,4 +109,5 @@ export {
   randomHexColor,
   formatDate,
   getCurrentDate,
+  xlsxToJson,
 };

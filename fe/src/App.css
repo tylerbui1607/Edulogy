@@ -829,6 +829,34 @@ button.dropdown-item {
     color: white;
     display: block; }
 
+.loading-popup {
+  background: white;
+  padding: 2em;
+  width: 450px;
+  max-width: calc(100vw - 2em);
+  border-radius: 1em; }
+  .loading-popup h4 {
+    font-size: 18px;
+    text-align: center;
+    font-weight: lighter;
+    color: #535353; }
+  .loading-popup button {
+    display: block;
+    margin: auto;
+    background: #3289fa;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    margin-top: 1em; }
+
+.autohide-popup {
+  padding: 1em 2em;
+  background: #333333;
+  color: white;
+  opacity: 0.9;
+  border-radius: 0.5em; }
+
 .loading_page {
   height: calc(100vh - 6em);
   width: 100%;
@@ -1123,6 +1151,12 @@ button.dropdown-item {
   .new-post-form #cancel-btn {
     background: #dddddd;
     margin-left: 1em; }
+  .new-post-form .action-msg {
+    font-size: 14px;
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px; }
 
 .test-page {
   background: white;
@@ -1973,7 +2007,7 @@ button.dropdown-item {
   overflow: hidden; }
   .admin-page .admin-section {
     width: 95%;
-    height: calc(100% - 6em);
+    height: calc(100% - 8em);
     margin: auto;
     display: flex;
     justify-content: space-between; }
@@ -1996,7 +2030,8 @@ button.dropdown-item {
         background-color: #b94848; }
       .admin-page .admin-section form h3 {
         text-align: center; }
-      .admin-page .admin-section form input {
+      .admin-page .admin-section form input,
+      .admin-page .admin-section form select {
         display: block;
         height: 2.5em;
         line-height: 2.5em;
@@ -2014,7 +2049,8 @@ button.dropdown-item {
         height: auto;
         line-height: normal; }
       .admin-page .admin-section form input[type="text"],
-      .admin-page .admin-section form input[type="number"] {
+      .admin-page .admin-section form input[type="number"],
+      .admin-page .admin-section form select {
         border: 1px solid #333; }
       .admin-page .admin-section form label {
         display: block;
@@ -2028,6 +2064,9 @@ button.dropdown-item {
         margin-top: 0.25em; }
       .admin-page .admin-section form > .row {
         margin-top: 0.5em; }
+      .admin-page .admin-section form select option {
+        padding: 5px 0;
+        font-size: 16px; }
     .admin-page .admin-section .table-view {
       width: calc(100% - 350px - 1em);
       box-shadow: 0 0 2px 0 #757575;
@@ -2131,6 +2170,7 @@ button.dropdown-item {
   .admin-page .report-view {
     width: 95%;
     margin: auto;
+    margin-top: 1em;
     height: 8em;
     display: flex;
     justify-content: space-between;

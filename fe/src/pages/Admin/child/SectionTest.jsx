@@ -1,6 +1,6 @@
 import { testActions } from "../../../actions/testActions";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { showStatus } from "../../../helper";
 import UpdateTestForm from "./FormUpdateTest";
 import AddTestForm from "./FormAddTest";
@@ -59,6 +59,7 @@ export default function TestSection(props) {
     showStatus("loading", "");
     dispatch(testActions.addTest(fromdata));
   }
+  useEffect(() => { }, [])
   return (
     <div className="admin-section">
       <div className="form-view">

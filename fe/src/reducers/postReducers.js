@@ -12,6 +12,12 @@ const initialState = {
     data: {},
     status: c.LOADING,
   },
+  action: {
+    create: {
+      status: c.NONE,
+      msg: "",
+    },
+  },
 };
 export function post(state = initialState, action) {
   switch (action.type) {
@@ -68,11 +74,25 @@ export function post(state = initialState, action) {
       window.location.reload();
       return {
         ...state,
+        action: {
+          ...state.action,
+          create: {
+            status: c.SUCCESS,
+            msg: "Đăng bài viết thành công !",
+          },
+        },
       };
     }
     case c.CREATE_NEW_POST_FAILURE:
       return {
         ...state,
+        action: {
+          ...state.action,
+          create: {
+            status: c.FAILURE,
+            msg: action.msg,
+          },
+        },
       };
     default:
       return state;

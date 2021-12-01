@@ -32,7 +32,8 @@ function getTest(query) {
 function addTest(test) {
   let requestOption = {
     method: "POST",
-    body: test,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(test),
   };
   return fetch(`${c.apiUrl}/tests`, requestOption)
     .then((res) => res.json())

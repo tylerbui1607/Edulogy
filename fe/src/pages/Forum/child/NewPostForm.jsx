@@ -6,6 +6,7 @@ import { postActions as a } from '../../../actions/postActions';
 import { getCurrentDate } from '../../../helper';
 export default function NewPostForm(props) {
   const myInput = useRef(null);
+  const actionStatus = useSelector(state => state.post.action.create);
   const dispatch = useDispatch();
   const [postInfo, setPostInfo] = useState({ title: "", content: "" });
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -78,6 +79,10 @@ export default function NewPostForm(props) {
             accept="image/jpeg, image/jpg, image/png"
           />
         </div>
+        {
+          actionStatus.msg &&
+          <p className="action-msg">{actionStatus.msg}</p>
+        }
         <div className="action">
           <button id="submit-btn" onClick={handleSubmit}>Đăng bài</button>
           <button id="cancel-btn" onClick={props.onClose}>Hủy</button>

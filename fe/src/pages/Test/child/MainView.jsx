@@ -40,7 +40,7 @@ export default function MainView(props) {
         }
       </div>
       <div className="part-direction">{partDirection[currentPart]}</div>
-      { //display content if part is 5 or user already submit
+      {
         (
           test.questions[currentQuestion].content
           && test.questions[currentQuestion].part > 4
@@ -56,6 +56,7 @@ export default function MainView(props) {
           test.questions[currentQuestion].img
             ? <img
               src={test.questions[currentQuestion].img}
+              style={test.questions[currentQuestion].part === 6 ? { width: "100%" } : {}}
               alt="Q_Image" />
             : <div></div>
         }

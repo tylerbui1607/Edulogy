@@ -184,6 +184,36 @@
     display: block;
   }
 }
+.loading-popup {
+  background: white;
+  padding: 2em;
+  width: 450px;
+  max-width: calc(100vw - 2em);
+  border-radius: 1em;
+  h4 {
+    font-size: 18px;
+    text-align: center;
+    font-weight: lighter;
+    color: rgb(83, 83, 83);
+  }
+  button {
+    display: block;
+    margin: auto;
+    background: $blue-light;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    padding: 7px 20px;
+    margin-top: 1em;
+  }
+}
+.autohide-popup {
+  padding: 1em 2em;
+  background: rgb(51, 51, 51);
+  color: white;
+  opacity: 0.9;
+  border-radius: 0.5em;
+}
 .loading_page {
   height: calc(100vh - 6em);
   width: 100%;

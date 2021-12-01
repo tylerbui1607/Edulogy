@@ -2,7 +2,6 @@ const base = require("./baseController");
 const { Test } = require("../models/testModel");
 const { Question, validate } = require("../models/questionModel");
 const _ = require("lodash");
-
 exports.getOne = async (req, res, next) => {
   try {
     let doc = await Test.findById(req.params.id).populate("questions");
@@ -69,27 +68,15 @@ exports.addOne = async (req, res, next) => {
   };
   try {
     let errorList = [];
-    for (let i = 0; i < req.questions.length; i++) {
-      let { error } = validate(req.questions[i]);
+    for (let i = 0; i < req.body.questions.length; i++) {
+      let { error } = validate(req.body.questions[i]);
       if (error)
         errorList.push(
           `Question ${i + 1} has error : ` + error.details[0].message
         );
       else {
-        let question;
-
-        if (req.questions[i].content) {
-          question = await Question.findOne({
-            //check if question already exists
-            content: req.questions[i].content,
-          });
-        }
-
-        if (!question) {
-          question = new Question(req.questions[i]);
-          await question.save();
-        }
-
+        question = new Question(req.body.questions[i]);
+        await question.save();
         test.questions.push(question._id);
       }
     }
