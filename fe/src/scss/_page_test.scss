@@ -209,8 +209,10 @@
   margin-bottom: 1em;
   position: relative;
   .card_container {
-    box-shadow: 0 0 4px 0 #333;
+    box-shadow: 0 0 6px 0 rgb(156, 156, 156);
     padding-bottom: 1em;
+    border-radius: 0.25em;
+    overflow: hidden;
     img {
       width: 100%;
       object-fit: contain;
@@ -233,14 +235,13 @@
       font-size: 14px;
       position: absolute;
       top: 0;
-      right: 0.5em;
+      right: 8px;
       padding: 0.25em;
       padding-left: 0.5em;
       padding-right: 0.5em;
       color: white;
       background: $test-page-main-color;
-      border-radius: 0.25em;
-      border-top-right-radius: 0;
+      border-top-right-radius: 0.25em;
     }
     .time {
       margin-top: 0.25em;
@@ -249,6 +250,9 @@
       font-size: 14px;
       color: $mini-text-color;
     }
+  }
+  .card_container:hover {
+    box-shadow: 0 0 8px 0 rgb(122, 122, 122);
   }
 }
 .list-test-page {

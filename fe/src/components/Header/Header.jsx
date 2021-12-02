@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { showSidebar } from "../../helper";
 import { appActions } from '../../actions/appActions';
@@ -7,9 +7,10 @@ import { constants as c } from '../../constants';
 import Sidebar from "./child/Sidebar";
 function Header(props) {
   const dispatch = useDispatch();
+  const [currentActive, setCurrentActive] = useState("");
   const user = useSelector(store => store.authentication.user);
   function handleLoginClick() {
-    dispatch(appActions.changePopup(c.POPUP_LOGIN));
+    dispatch(appActions.changePopup(c.POPUP_LOGIN, "", {}));
   }
   function handleProfileClick(e) {
     e.preventDefault();
@@ -21,6 +22,15 @@ function Header(props) {
   function handleShowSidebar() {
     showSidebar();
   }
+  useEffect(() => {
+    window.addEventListener("click", function (e) {
+      let containers = document.querySelectorAll(".header-dropdown");
+      for (let i = 0; i < containers.length; i++) {
+        if (containers[i].contains(e.target)) return;
+      }
+      setCurrentActive("");
+    });
+  }, [])
   return (
     <React.Fragment>
       <div style={{ background: "white" }}>
@@ -32,12 +42,18 @@ function Header(props) {
           </div>
           <div className="dropdown-container">
             <div className="dropdown">
-              <a href="/de-thi" className="dropdown-btn">Đề kiểm tra +</a>
-              <div className="dropdown-list">
+              <a href="/de-thi" className="dropdown-btn">Đề kiểm tra <i className="fas fa-caret-down"></i></a>
+              <div className={
+                "dropdown-list"
+                +
+                (currentActive === "test" ? " active" : "")
+              }>
                 <a href="/de-thi?type=mini" className="dropdown-item">Mini test</a>
-                <a href="/de-thi?type=part1" className="dropdown-item">Part I:  Hình ảnh</a>
-                <a href="/de-thi?type=part2" className="dropdown-item">Part II: Hội thoại</a>
-                <a href="/de-thi?type=part5" className="dropdown-item">Part V: Điền khuyết</a>
+                <a href="/de-thi?type=part1" className="dropdown-item"> <span>Part I:</span> Hình ảnh</a>
+                <a href="/de-thi?type=part2" className="dropdown-item"> <span>Part II:</span> Hội thoại</a>
+                <a href="/de-thi?type=part5" className="dropdown-item"> <span>Part V:</span> Điền khuyết</a>
+                <a href="/de-thi?type=part6" className="dropdown-item"> <span>Part VI:</span> Điền từ</a>
+                <a href="/de-thi?type=part7" className="dropdown-item"> <span>Part VII:</span>  Điền khuyết</a>
               </div>
             </div>
             <div className="dropdown">
@@ -61,12 +77,12 @@ function Header(props) {
                   </button>
                   :
                   <div className="account-dropdown">
-                    <div
+                    <button
                       id="account-btn"
                       className="dropdown-btn account-btn"
                     >
-                      Thông tin tài khoản
-                    </div>
+                      Tài khoản <i className="fas fa-caret-down"></i>
+                    </button>
                     <div className="dropdown-list">
                       <a
                         href="/"

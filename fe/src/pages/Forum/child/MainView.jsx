@@ -29,10 +29,6 @@ export default function MainView() {
           Bài viết mới &nbsp;
           <i className="fas fa-plus"></i>
         </button>
-        <button>
-          <i className="fas fa-sliders-h"></i> &nbsp;
-          Bộ lọc
-        </button>
       </div>
       <div className="main-view__post-container">
         {

@@ -5,7 +5,7 @@ const initialState = {
     type: c.NONE,
     msg: "Thêm test thành công!",
     additionalInfo: {
-      status: c.LOADING,
+      status: c.NONE,
     },
   },
   popupType: "",

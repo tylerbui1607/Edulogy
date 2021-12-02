@@ -1,14 +1,27 @@
 import { userService } from "../services/userServices";
 import { constants } from "../constants";
 import { showStatus } from "../helper";
+import { appActions } from "./appActions";
 function login(email, password) {
   return (dispatch) => {
     userService.login(email, password).then((res) => {
-      if (res.user) dispatch(success(res.user));
-      else dispatch(failure(res.message));
+      if (res.user) {
+        dispatch(success(res.user));
+        dispatch(
+          appActions.changePopup(constants.POPUP_LOGIN, "", {
+            status: constants.SUCCESS,
+          })
+        );
+      } else {
+        dispatch(failure(res.message));
+        dispatch(
+          appActions.changePopup(constants.POPUP_LOGIN, res.message, {
+            status: constants.FAILURE,
+          })
+        );
+      }
     });
   };
-
   function success(user) {
     return { type: constants.LOGIN_SUCCESS, user };
   }

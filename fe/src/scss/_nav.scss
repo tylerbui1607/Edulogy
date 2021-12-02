@@ -109,40 +109,45 @@
 .nav .dropdown {
   margin-left: 3em;
   position: relative;
+  height: 64px;
 }
 .nav .dropdown .dropdown-btn {
   color: rgb(88, 88, 88);
   text-decoration: none;
   font-weight: 600;
   font-size: 14px;
-  line-height: 4em;
+  line-height: 64px;
   display: block;
 }
 .dropdown-list {
   width: auto;
   z-index: 2;
-  display: none;
   opacity: 0;
-  transition: opacity 1s;
+  visibility: hidden;
   position: absolute;
   background-color: white;
-  padding-right: 0.5em;
   border-radius: 0.25em;
-  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 8px 0 rgba(58, 58, 58, 0.5);
+  transition: 0.5s;
+  right: 0;
+  overflow: hidden;
+  a {
+    display: flex;
+    span {
+      width: 4em;
+      display: block;
+    }
+  }
 }
 .dropdown:hover .dropdown-list {
-  display: block;
   opacity: 1;
-}
-.dropdown-item:first-of-type {
-  padding-top: 1em;
+  visibility: visible;
 }
 .dropdown-item {
-  padding-bottom: 1em;
-  padding-left: 1em;
+  padding: 0.75em 1em;
   display: block;
-  color: #3c3f42;
-  font-size: 0.875em;
+  color: #686868;
+  font-size: 15px;
 }
 a.dropdown-item {
   min-width: 15em;
@@ -151,7 +156,7 @@ button.dropdown-item {
   min-width: 10em;
 }
 .dropdown-item:hover {
-  color: #2d7bc4;
+  background: rgb(238, 238, 238);
 }
 #account-btn {
   border: rgb(86, 142, 216) 2px solid;
@@ -159,6 +164,7 @@ button.dropdown-item {
   height: 3em;
   width: 10em;
   line-height: 2.75em;
+  margin: calc((64px - 2.75em) / 2) 0;
   text-align: center;
   color: #333;
   font-weight: 600;
@@ -171,9 +177,6 @@ button.dropdown-item {
     right: 0;
     a.dropdown-item {
       min-width: 10em;
-    }
-    div.dropdown-item:first-of-type {
-      padding-top: 0em;
     }
     .dropdown-item {
       cursor: pointer;
