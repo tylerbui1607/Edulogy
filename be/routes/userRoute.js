@@ -22,7 +22,7 @@ router.put("/:id", userController.update);
 
 router.use(auth.restrictTo("admin"));
 
-router.post("/", validator(validate), userController.signup);
+router.post("/", validator(validate), userController.addOne);
 
 router.get("/", userController.getAll);
 

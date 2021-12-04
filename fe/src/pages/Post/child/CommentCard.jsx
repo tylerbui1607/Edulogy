@@ -1,5 +1,19 @@
+import { useDispatch, useSelector } from "react-redux";
+import { postActions as a } from "../../../actions/postActions";
 export default function CommentCard(props) {
+  const dispatch = useDispatch();
   const { user, content, like, dislike, date } = props;
+  const profile = useSelector(store => store.authentication.user);
+  function handleLike() {
+    if (profile && like.indexOf(profile._id) !== -1)
+      return;
+    dispatch(a.likeComment(props._id));
+  }
+  function handleDislike() {
+    if (profile && dislike.indexOf(profile._id) !== -1)
+      return;
+    dispatch(a.dislikeComment(props._id));
+  }
   return (
     <div className="comment-card">
       <div>
@@ -7,12 +21,32 @@ export default function CommentCard(props) {
           {user.name[0]}
         </div>
         <div className="action">
-          <span>
-            <i className="fas fa-caret-up"></i>
+          <span onClick={handleLike}>
+            <i
+              style={
+                profile && like.indexOf(profile._id) !== -1
+                  ?
+                  {
+                    color: "rgb(210, 210, 210)"
+                  }
+                  :
+                  {}
+              }
+              className="fas fa-caret-up"></i>
           </span>
           <p>{like.length - dislike.length}</p>
-          <span>
-            <i className="fas fa-caret-down"></i>
+          <span onClick={handleDislike}>
+            <i
+              style={
+                profile && dislike.indexOf(profile._id) !== -1
+                  ?
+                  {
+                    color: "rgb(210, 210, 210)"
+                  }
+                  :
+                  {}
+              }
+              className="fas fa-caret-down"></i>
           </span>
         </div>
       </div>

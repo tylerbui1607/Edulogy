@@ -4,7 +4,7 @@ export default function ReportView(props) {
     <div className="report-view">
       <InfoCard
         icon="far fa-id-card"
-        title="Học viên"
+        title="Người dùng"
         number={props.users}
         color="rgb(189, 124, 113)"
       />
@@ -21,9 +21,9 @@ export default function ReportView(props) {
         color="rgb(77, 185, 189)"
       />
       <InfoCard
-        icon="fas fa-star-half-alt"
-        title="Đánh giá"
-        number="4.2"
+        icon="far fa-comments"
+        title="Bài viết"
+        number={props.posts}
         color="rgb(206, 207, 113)"
       />
     </div>

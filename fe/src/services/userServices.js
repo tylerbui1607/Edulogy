@@ -47,14 +47,14 @@ function logout() {
   localStorage.removeItem("user");
   localStorage.removeItem("token");
 }
-function update(name, email, id) {
+function update(id, info) {
   let requestOption = {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       authorization: JSON.parse(localStorage.getItem("token")),
     },
-    body: JSON.stringify({ name, email }),
+    body: JSON.stringify(info),
   };
   return fetch(`${constants.apiUrl}/users/${id}`, requestOption)
     .then((res) => res.json())
@@ -63,7 +63,6 @@ function update(name, email, id) {
       return json;
     });
 }
-
 function addOne(user) {
   let requestOption = {
     method: "POST",
@@ -84,7 +83,6 @@ function addOne(user) {
       return;
     });
 }
-
 export const userService = {
   login,
   logout,

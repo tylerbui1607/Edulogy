@@ -1,6 +1,5 @@
 import { userService } from "../services/userServices";
 import { constants } from "../constants";
-import { showStatus } from "../helper";
 import { appActions } from "./appActions";
 function login(email, password) {
   return (dispatch) => {
@@ -29,7 +28,6 @@ function login(email, password) {
     return { type: constants.LOGIN_FAILURE, message };
   }
 }
-
 function register(name, email, password) {
   return (dispatch) => {
     userService.register(name, email, password).then((res) => {
@@ -45,44 +43,60 @@ function register(name, email, password) {
     return { type: constants.REGISTER_FAILURE, message };
   }
 }
-
 function logout() {
   userService.logout();
   return (dispatch) => {
     dispatch({ type: constants.LOGOUT });
   };
 }
-
-function update(name, email, id) {
+function update(id, info) {
   return (dispatch) => {
-    userService.update(name, email, id).then((res) => {
-      console.log(res.doc);
-      if (res.doc) dispatch(success(res.doc));
+    userService.update(id, info).then((res) => {
+      if (res.status === "success")
+        dispatch(
+          appActions.changePopup(
+            constants.MESSAGE_POPUP,
+            "Cập nhật thông tin người dùng thành công!",
+            {
+              status: constants.SUCCESS,
+              willReload: true,
+            }
+          )
+        );
+      else
+        dispatch(
+          appActions.changePopup(constants.MESSAGE_POPUP, res.message, {
+            status: constants.FAILURE,
+            willReload: false,
+          })
+        );
     });
   };
-  function success(user) {
-    return { type: constants.UPDATE_SUCCESS, user };
-  }
 }
-
 function addOne(user) {
   return (dispatch) => {
     userService.addOne(user).then((res) => {
-      if (res.user) dispatch(success(res.user));
-      else dispatch(failure(res.message));
+      if (res.status === "success")
+        dispatch(
+          appActions.changePopup(
+            constants.MESSAGE_POPUP,
+            "Thêm người dùng thành công!",
+            {
+              status: constants.SUCCESS,
+              willReload: true,
+            }
+          )
+        );
+      else
+        dispatch(
+          appActions.changePopup(constants.MESSAGE_POPUP, res.message, {
+            status: constants.FAILURE,
+            willReload: false,
+          })
+        );
     });
   };
-
-  function success(user) {
-    showStatus("success", "Thêm người dùng thành công !");
-    return { type: constants.CREATE_USER_SUCCESS, user };
-  }
-  function failure(message) {
-    showStatus("fail", "Có lỗi xảy ra vui lòng thử lại sau !<br/>" + message);
-    return { type: constants.CREATE_USER_FAILURE, message };
-  }
 }
-
 export const userActions = {
   login,
   logout,

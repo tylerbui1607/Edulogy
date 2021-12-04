@@ -1,75 +1,9 @@
 const { Comment } = require("../models/commentModel");
 const base = require("./baseController");
-exports.addOne = base.addOne(Comment);
-exports.likeOne = async (req, res, next) => {
-  try {
-    let comment = await Comment.findById(req.params.id);
-    if (!comment) {
-      res.status(404).json({
-        status: "fail",
-        message: "No comment found with that id",
-      });
-      return;
-    }
-    if (comment.like.indexOf(req.user._id) !== -1) {
-      res.status(405).json({
-        status: "fail",
-        message: "This user already liked this!",
-      });
-      return;
-    }
-    let indexInDislike = comment.dislike.indexOf(req.user._id);
-    if (indexInDislike !== -1) comment.dislike.splice(indexInDislike, 1);
-    comment.like.push(req.user._id);
-    await comment.save();
-    res.status(200).json({
-      status: "success",
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      status: "fail",
-      message: "Something went wrong please try again latter!",
-    });
-  }
-};
-exports.dislikeOne = async (req, res, next) => {
-  try {
-    let comment = await Comment.findById(req.params.id);
-    if (!comment) {
-      res.status(404).json({
-        status: "fail",
-        message: "No comment found with that id",
-      });
-      return;
-    }
-
-    if (comment.dislike.indexOf(req.user._id) !== -1) {
-      res.status(405).json({
-        status: "fail",
-        message: "This user already disliked this!",
-      });
-      return;
-    }
-    let indexInLike = comment.like.indexOf(req.user._id);
-    if (indexInLike !== -1) comment.like.splice(indexInLike, 1);
-    comment.dislike.push(req.user._id);
-    await comment.save();
-    res.status(200).json({
-      status: "success",
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json({
-      status: "fail",
-      message: "Something went wrong please try again latter!",
-    });
-  }
-};
+const c = require("../constants");
 exports.getOne = async (req, res, next) => {
   try {
     let comment = await Comment.findById(req.params.id)
-      .select("-subComments")
       .populate("user", "name")
       .lean();
     if (!comment) {
@@ -91,56 +25,52 @@ exports.getOne = async (req, res, next) => {
     });
   }
 };
-exports.getAll = async (req, res, next) => {
+exports.likeOne = async (req, res, next) => {
   try {
-    let comments = await Comment.find({})
-      .select("-subComments")
-      .populate("user", "name")
-      .lean();
-    if (!comments.length) {
+    const doc = await Comment.findById(req.params.id);
+    if (!doc) {
       res.status(404).json({
         status: "fail",
-        message: "No document found with that id",
+        message: c.DOCUMENT_NOT_FOUND_ERROR,
       });
       return;
     }
-    res.status(200).json({
-      status: "success",
-      doc: comments,
-    });
+    let likeIndex = doc.like.indexOf(req.user._id);
+    if (likeIndex === -1) doc.like.push(req.user._id);
+    let dislikeIndex = doc.dislike.indexOf(req.user._id);
+    if (dislikeIndex !== -1) doc.dislike.splice(dislikeIndex, 1);
+    await doc.save();
+    this.getOne(req, res);
   } catch (err) {
     console.log(err);
-    res.status(500).json({
-      status: "fail",
-      message: "Something went wrong please try again latter!",
-    });
-  }
-};
-exports.updateOne = base.updateOne(Comment);
-exports.reply = async (req, res, next) => {
-  try {
-    let comment = await Comment.findById(req.params.id);
-
-    if (!comment) {
-      res.status(404).json({
-        status: "fail",
-        message: "No document found with that id",
-      });
-      return;
-    }
-
-    let subComment = new Comment(req.body);
-    await subComment.save();
-
-    comment.subComments.push(subComment._id);
-
-    await comment.save();
-
-    this.getOne(req, res, next);
-  } catch (err) {
     res.status(500).json({
       status: "fail",
       message: "Something went wrong please try again latter !",
     });
   }
 };
+exports.dislikeOne = async (req, res, next) => {
+  try {
+    const doc = await Comment.findById(req.params.id);
+    if (!doc) {
+      res.status(404).json({
+        status: "fail",
+        message: c.DOCUMENT_NOT_FOUND_ERROR,
+      });
+      return;
+    }
+    let likeIndex = doc.like.indexOf(req.user._id);
+    if (likeIndex !== -1) doc.like.splice(likeIndex, 1);
+    let dislikeIndex = doc.dislike.indexOf(req.user._id);
+    if (dislikeIndex === -1) doc.dislike.push(req.user._id);
+    await doc.save();
+    this.getOne(req, res);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      status: "fail",
+      message: "Something went wrong please try again latter !",
+    });
+  }
+};
+exports.updateOne = base.updateOne(Comment);

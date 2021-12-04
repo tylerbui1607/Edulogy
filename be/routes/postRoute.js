@@ -9,4 +9,6 @@ router.get("/", controller.getAll);
 router.use(auth.protect);
 router.post("/comment/:id", controller.reply);
 router.post("/", validator(validate), controller.addOne);
+router.put("/like/:id", controller.likeOne);
+router.put("/dislike/:id", controller.dislikeOne);
 module.exports = router;

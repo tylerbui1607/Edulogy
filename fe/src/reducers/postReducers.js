@@ -83,6 +83,33 @@ export function post(state = initialState, action) {
         },
       };
     }
+    case c.LIKE_POST_SUCCESS:
+      return {
+        ...state,
+        info: {
+          status: c.SUCCESS,
+          data: action.data,
+        },
+      };
+    case c.LIKE_COMMENT_SUCCESS: {
+      let newState = { ...state };
+      newState.info.data.comments = newState.info.data.comments.map((v) => {
+        if (v._id === action.data._id) return action.data;
+        return v;
+      });
+      return newState;
+    }
+    case c.SEND_CREATE_POST_REQUEST:
+      return {
+        ...state,
+        action: {
+          ...state.action,
+          create: {
+            status: c.LOADING,
+            msg: "",
+          },
+        },
+      };
     case c.CREATE_NEW_POST_FAILURE:
       return {
         ...state,

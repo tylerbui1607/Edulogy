@@ -24,6 +24,7 @@ function getAdminInfo() {
   return fetch(`${c.apiUrl}/admin`, requestOption)
     .then((res) => res.json())
     .then((json) => {
+      console.log(json);
       return json;
     });
 }

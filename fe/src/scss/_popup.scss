@@ -85,14 +85,11 @@
   }
 }
 .confirm-popup {
-  padding: 1em;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  padding: 2em 1em;
   background: white;
   border-radius: 0.25em;
   max-width: 100vw;
   min-width: 300px;
-  min-height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -110,7 +107,7 @@
   }
   .cancel-btn {
     background-color: $alert-color;
-    margin-left: 0.5em;
+    margin-left: 1.5em;
   }
 }
 .status-popup {
@@ -205,6 +202,10 @@
     text-transform: uppercase;
     padding: 7px 20px;
     margin-top: 1em;
+  }
+  svg {
+    width: 80px;
+    height: 80px;
   }
 }
 .autohide-popup {

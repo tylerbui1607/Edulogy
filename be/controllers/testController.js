@@ -62,7 +62,7 @@ exports.addOne = async (req, res, next) => {
   let test = {
     name: req.body.name,
     time: req.body.time,
-    type: req.type,
+    type: req.body.type,
     img: req.body.img,
     questions: [],
   };

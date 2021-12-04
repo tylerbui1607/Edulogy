@@ -8,10 +8,23 @@ import CommentInput from "./CommentInput";
 export default function MainView(props) {
   const dispatch = useDispatch();
   const info = useSelector(state => state.post.info);
+  const user = useSelector(store => store.authentication.user);
+  const comments = useSelector(state => state.post.info.data.comments);
+  function handleLike() {
+    if (user && info.data.like.indexOf(user._id) !== -1)
+      return;
+    dispatch(a.likePost(props.id));
+  }
+  function handleDislike() {
+    if (user && info.data.dislike.indexOf(user._id) !== -1)
+      return;
+    dispatch(a.dislikePost(props.id));
+  }
   useEffect(() => {
+    console.log(info);
     if (info.status === c.LOADING)
       dispatch(a.getPostById(props.id));
-  }, [])
+  }, [info])
   return (
     <div className="main-view show_flex">
       {
@@ -23,14 +36,36 @@ export default function MainView(props) {
                 {info.data.user.name[0]}
               </div>
               <div className="main-view__post__action">
-                <span>
-                  <i className="fas fa-caret-up"></i>
+                <span
+                  onClick={handleLike}
+                >
+                  <i
+                    style={
+                      user && info.data.like.indexOf(user._id) !== -1
+                        ?
+                        {
+                          color: "rgb(210, 210, 210)"
+                        }
+                        :
+                        {}
+                    }
+                    className="fas fa-caret-up"></i>
                 </span>
                 <p>
                   {info.data.like.length - info.data.dislike.length}
                 </p>
-                <span>
-                  <i className="fas fa-caret-down"></i>
+                <span onClick={handleDislike}>
+                  <i
+                    style={
+                      user && info.data.dislike.indexOf(user._id) !== -1
+                        ?
+                        {
+                          color: "rgb(210, 210, 210)"
+                        }
+                        :
+                        {}
+                    }
+                    className="fas fa-caret-down"></i>
                 </span>
               </div>
             </div>
@@ -49,7 +84,9 @@ export default function MainView(props) {
                 <h4>{info.data.comments.length} Bình luận</h4>
                 <CommentInput id={props.id} />
                 {
-                  info.data.comments.map((v) => <CommentCard {...v} key={v._id} />)
+                  comments
+                  && comments.length > 0
+                  && info.data.comments.map((v) => <CommentCard {...v} key={v._id} />)
                 }
               </div>
             </div>

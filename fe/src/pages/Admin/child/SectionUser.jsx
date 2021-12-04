@@ -1,55 +1,30 @@
-import { userActions } from "../../../actions/userActions";
-import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { showStatus } from "../../../helper";
 import UpdateUserForm from "./FormUpdateUser";
 import AddUserForm from "./FormAddUser";
 export default function UserSection(props) {
-  const dispatch = useDispatch();
-  const [customClass, setCustomClass] = useState({ confirm: "modal", info: "modal" });
-  const [updateInfo, setUpdateInfo] = useState({ name: "", nQuestions: 0, questions: [] });
-  const [insertInfo, setInsertInfo] = useState({});
+  const [currentForm, setCurrentForm] = useState("none");
+  const [selectedUser, setSelectedUser] = useState({});
+  const forms = {
+    "none": <></>,
+    "update":
+      <UpdateUserForm
+        onClose={handleCloseForm}
+        user={{ ...selectedUser }}
+      />
+  }
+  function handleCloseForm(e) {
+    e.preventDefault();
+    setCurrentForm("none");
+  }
   function handleShowEdit(user) {
-    setUpdateInfo({ ...user });
-    setCustomClass({ ...customClass, info: "modal show_flex" });
-  }
-  function handleCloseEdit(e) {
-    e.preventDefault();
-    setCustomClass({ ...customClass, info: "modal" });
-  }
-
-  function handleInputUpdateChange(e) {
-    let { name, value } = e.target;
-    setUpdateInfo({ ...updateInfo, [name]: value });
-  }
-  function handleInsertInputChange(e) {
-    let { name, value } = e.target;
-    setInsertInfo({ ...insertInfo, [name]: value });
-  }
-
-  function handleUpdate(e) {
-    e.preventDefault();
-    setCustomClass({ ...customClass, info: "modal" });
-    console.log(updateInfo);
-    updateInfo.questions = undefined;
-    showStatus("loading", "");
-    //dispatch(testActions.updateTest(updateInfo._id, updateInfo));
-  }
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    console.log(insertInfo);
-    showStatus("loading", "");
-    dispatch(userActions.addOne(insertInfo));
+    setCurrentForm("update");
+    setSelectedUser(user);
   }
   return (
     <div className="admin-section">
       <div className="form-view">
-        <AddUserForm
-          insertInfo={insertInfo}
-          handleSubmit={handleSubmit}
-          handleInsertInputChange={handleInsertInputChange}
-        />
+        <AddUserForm />
       </div>
       <div className="table-view">
         <h3>Danh sách người dùng</h3>
@@ -105,14 +80,9 @@ export default function UserSection(props) {
           }
         </div>
       </div>
-      <div className={customClass.info}>
-        <UpdateUserForm
-          handleInputUpdateChange={handleInputUpdateChange}
-          updateInfo={updateInfo}
-          handleCloseEdit={handleCloseEdit}
-          handleUpdate={handleUpdate}
-        />
-      </div>
+      {
+        forms[currentForm]
+      }
     </div>
   )
 }

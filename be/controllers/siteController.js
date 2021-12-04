@@ -2,6 +2,7 @@ const { Test } = require("../models/testModel");
 const { Question } = require("../models/questionModel");
 const { User } = require("../models/userModel");
 const { Comment } = require("../models/commentModel");
+const { Post } = require("../models/postModel");
 
 exports.homePage = async (req, res, next) => {
   try {
@@ -32,12 +33,10 @@ exports.homePage = async (req, res, next) => {
 
 exports.adminPage = async (req, res, next) => {
   try {
-    const tests = await Test.find({})
-      .select("-type")
-      .populate("questions")
-      .lean();
+    const tests = await Test.find({}).populate("questions").lean();
     const questions = await Question.find({}).lean();
     const users = await User.find({}).sort("role").lean();
+    const posts = await Post.find({}).lean();
     for (let i = 0; i < users.length; i++) {
       let score = 0;
       let comments = await Comment.find({ user: users[i]._id }).lean();
@@ -50,6 +49,7 @@ exports.adminPage = async (req, res, next) => {
       tests,
       questions: questions.length,
       users,
+      posts,
     });
   } catch (err) {
     console.log(err);

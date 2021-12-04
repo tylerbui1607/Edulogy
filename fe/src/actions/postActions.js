@@ -85,10 +85,82 @@ function commentPost(id, info) {
     return { type: c.COMMENT_POST_FAILURE };
   }
 }
+function likePost(id) {
+  return (dispatch) => {
+    postServices.likePost(id).then((res) => {
+      if (res.status === "success") {
+        dispatch(success(res.doc));
+        return;
+      }
+      dispatch(failure());
+    });
+  };
+  function success(data) {
+    return { type: c.LIKE_POST_SUCCESS, data };
+  }
+  function failure() {
+    return { type: c.LIKE_POST_FAILURE };
+  }
+}
+function dislikePost(id) {
+  return (dispatch) => {
+    postServices.dislikePost(id).then((res) => {
+      if (res.status === "success") {
+        dispatch(success(res.doc));
+        return;
+      }
+      dispatch(failure());
+    });
+  };
+  function success(data) {
+    return { type: c.LIKE_POST_SUCCESS, data };
+  }
+  function failure() {
+    return { type: c.LIKE_POST_FAILURE };
+  }
+}
+function likeComment(id) {
+  return (dispatch) => {
+    postServices.likeComment(id).then((res) => {
+      if (res.status === "success") {
+        dispatch(success(res.doc));
+        return;
+      }
+      dispatch(failure());
+    });
+  };
+  function success(data) {
+    return { type: c.LIKE_COMMENT_SUCCESS, data };
+  }
+  function failure() {
+    return { type: c.LIKE_COMMENT_FAILURE };
+  }
+}
+function dislikeComment(id) {
+  return (dispatch) => {
+    postServices.dislikeComment(id).then((res) => {
+      if (res.status === "success") {
+        dispatch(success(res.doc));
+        return;
+      }
+      dispatch(failure());
+    });
+  };
+  function success(data) {
+    return { type: c.LIKE_COMMENT_SUCCESS, data };
+  }
+  function failure() {
+    return { type: c.LIKE_COMMENT_FAILURE };
+  }
+}
 export const postActions = {
   getAllPosts,
   getTrendingPosts,
   createPost,
   getPostById,
   commentPost,
+  likePost,
+  dislikePost,
+  likeComment,
+  dislikeComment,
 };

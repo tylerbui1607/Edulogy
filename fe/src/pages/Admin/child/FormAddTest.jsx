@@ -91,7 +91,6 @@ export default function AddTestForm() {
           type: e.target.selectedOptions[0].value
         })
       }}>
-        <option value="full">Full</option>
         <option value="mini">Mini</option>
         <option value="part1">Part I</option>
         <option value="part2">Part II</option>

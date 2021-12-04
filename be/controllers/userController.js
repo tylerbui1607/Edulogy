@@ -137,7 +137,10 @@ exports.forgorPassword = async (req, res) => {
         sendEmail(data);
         return res
           .status(201)
-          .json({ success: "Verify code was sent to your email" ,mail:`${process.env.IDENT_EMAIL}`});
+          .json({
+            success: "Verify code was sent to your email",
+            mail: `${process.env.IDENT_EMAIL}`,
+          });
       }
     });
   }
@@ -175,6 +178,8 @@ exports.resetPassword = async (req, res) => {
     });
   }
 };
+
+exports.addOne = base.addOne(User);
 
 exports.getOne = base.getOne(User);
 

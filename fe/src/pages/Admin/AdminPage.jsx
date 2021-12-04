@@ -44,6 +44,7 @@ function AdminPage() {
               tests={info.tests.length}
               questions={info.questions}
               users={info.users.length}
+              posts={info.posts.length}
             />
             {sections[currentSection]}
             <button className="setting-btn" onClick={handleToggleSetting}>

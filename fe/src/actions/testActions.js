@@ -48,7 +48,7 @@ function addTest(test) {
         dispatch(
           appActions.changePopup(c.MESSAGE_POPUP, res.message, {
             status: c.FAILURE,
-            willReload: true,
+            willReload: false,
           })
         );
         dispatch(failure());
@@ -67,11 +67,21 @@ function deleteTest(id) {
   return (dispatch) => {
     testService.deleteTest(id).then((res) => {
       if (res.status === "success") {
-        showStatus("success", "Xóa test thành công !");
         dispatch(success());
+        dispatch(
+          appActions.changePopup(c.MESSAGE_POPUP, "Xóa test thành công!", {
+            status: c.SUCCESS,
+            willReload: true,
+          })
+        );
       } else {
-        showStatus("fail", "Có lỗi xảy ra vui lòng thử lại sau !");
         dispatch(failure(res.message));
+        dispatch(
+          appActions.changePopup(c.MESSAGE_POPUP, res.message, {
+            status: c.FAILURE,
+            willReload: false,
+          })
+        );
       }
     });
   };
@@ -87,10 +97,24 @@ function updateTest(id, test) {
   return (dispatch) => {
     testService.updateTest(id, test).then((res) => {
       if (res.status === "success") {
-        showStatus("success", "Cập nhật thông tin test thành công !");
+        dispatch(
+          appActions.changePopup(
+            c.MESSAGE_POPUP,
+            "Cập nhật thông tin test thành công!",
+            {
+              status: c.SUCCESS,
+              willReload: true,
+            }
+          )
+        );
         dispatch(success());
       } else {
-        showStatus("fail", "Có lỗi xảy ra vui lòng thử lại sau !");
+        dispatch(
+          appActions.changePopup(c.MESSAGE_POPUP, res.message, {
+            status: c.FAILURE,
+            willReload: false,
+          })
+        );
         dispatch(failure());
       }
     });

@@ -4,6 +4,7 @@ import { appActions as a } from "../../../actions/appActions";
 export default function Message() {
   const dispatch = useDispatch();
   const popupInfo = useSelector(state => state.application.popup);
+  console.log(popupInfo);
   return (
     <div className="modal active">
       <div className="loading-popup">
