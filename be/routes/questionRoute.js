@@ -9,8 +9,8 @@ const questionController = require("../controllers/questionControllers");
 router.get("/", questionController.getAll);
 router.get("/:id", questionController.getOne);
 
-router.use(auth.protect);
-router.use(auth.restrictTo("admin"));
+// router.use(auth.protect);
+// router.use(auth.restrictTo("admin"));
 
 router.post("/", validator(validate), questionController.addOne);
 router.put("/:id", questionController.updateOne);

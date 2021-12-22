@@ -9,7 +9,6 @@ function TestCard(props) {
         </div>
         <div className="name">{props.name}</div>
         <div className="time">Thời gian: {props.time}'</div>
-        <div className="level">{props.level}</div>
       </div>
     </a>
   )

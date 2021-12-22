@@ -9,6 +9,7 @@ const questionRoutes = require("./routes/questionRoute");
 const testRoutes = require("./routes/testRoute");
 const problemRoutes = require("./routes/problemRoute");
 const commentRoutes = require("./routes/commentRoute");
+const sectionRoutes = require("./routes/sectionRoute");
 const siteRoutes = require("./routes/siteRoute");
 const postRoutes = require("./routes/postRoute");
 const db = require("./config/database");
@@ -36,7 +37,9 @@ app.use(cors());
 app.use(express.json());
 app.use(express.raw());
 app.use(express.urlencoded({ extended: true }));
+
 //routes
+app.use("/api/sections", sectionRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/questions", questionRoutes);
 app.use("/api/tests", testRoutes);

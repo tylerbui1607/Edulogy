@@ -10,6 +10,10 @@ const initialState = {
   },
   popupType: "",
   status: c.LOADING,
+  home: {
+    status: c.LOADING,
+    data: {},
+  },
 };
 
 export function application(state = initialState, action) {
@@ -52,8 +56,10 @@ export function application(state = initialState, action) {
     case c.GET_HOME_SUCCESS:
       return {
         ...state,
-        status: c.SUCCESS,
-        homeInfo: action.info,
+        home: {
+          data: { ...action.data },
+          status: c.SUCCESS,
+        },
       };
     case c.GET_HOME_FAILURE:
     case c.GET_ADMIN_FAILURE:

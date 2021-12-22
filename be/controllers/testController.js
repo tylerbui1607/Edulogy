@@ -4,7 +4,12 @@ const { Question, validate } = require("../models/questionModel");
 const _ = require("lodash");
 exports.getOne = async (req, res, next) => {
   try {
-    let doc = await Test.findById(req.params.id).populate("questions");
+    let doc = await Test.findById(req.params.id).populate({
+      path: "sections",
+      populate: {
+        path: "questions",
+      },
+    });
     if (doc) {
       res.status(200).json({
         doc,
@@ -58,52 +63,53 @@ exports.getAll = async (req, res, next) => {
     next(error);
   }
 };
-exports.addOne = async (req, res, next) => {
-  let test = {
-    name: req.body.name,
-    time: req.body.time,
-    type: req.body.type,
-    img: req.body.img,
-    questions: [],
-  };
-  try {
-    let errorList = [];
-    for (let i = 0; i < req.body.questions.length; i++) {
-      let { error } = validate(req.body.questions[i]);
-      if (error)
-        errorList.push(
-          `Question ${i + 1} has error : ` + error.details[0].message
-        );
-      else {
-        question = new Question(req.body.questions[i]);
-        await question.save();
-        test.questions.push(question._id);
-      }
-    }
+exports.addOne = base.addOne(Test);
+// exports.addOne = async (req, res, next) => {
+//   let test = {
+//     name: req.body.name,
+//     time: req.body.time,
+//     type: req.body.type,
+//     img: req.body.img,
+//     questions: [],
+//   };
+//   try {
+//     let errorList = [];
+//     for (let i = 0; i < req.body.questions.length; i++) {
+//       let { error } = validate(req.body.questions[i]);
+//       if (error)
+//         errorList.push(
+//           `Question ${i + 1} has error : ` + error.details[0].message
+//         );
+//       else {
+//         question = new Question(req.body.questions[i]);
+//         await question.save();
+//         test.questions.push(question._id);
+//       }
+//     }
 
-    //all question are ok
-    if (errorList.length === 0) {
-      let doc = new Test(test);
-      await doc.save();
-      res.status(200).json({
-        status: "success",
-        doc,
-      });
-    } else {
-      let message = errorList.reduce((rs, v) => rs + v + "<br/>", "");
-      res.status(400).json({
-        status: "fail",
-        message,
-      });
-    }
-  } catch (error) {
-    console.log(error);
-    res.status(500).json({
-      status: "fail",
-      message: "Something went wrong please try again latter !",
-    });
-    return;
-  }
-};
+//     //all question are ok
+//     if (errorList.length === 0) {
+//       let doc = new Test(test);
+//       await doc.save();
+//       res.status(200).json({
+//         status: "success",
+//         doc,
+//       });
+//     } else {
+//       let message = errorList.reduce((rs, v) => rs + v + "<br/>", "");
+//       res.status(400).json({
+//         status: "fail",
+//         message,
+//       });
+//     }
+//   } catch (error) {
+//     console.log(error);
+//     res.status(500).json({
+//       status: "fail",
+//       message: "Something went wrong please try again latter !",
+//     });
+//     return;
+//   }
+// };
 exports.deleteOne = base.deleteOne(Test);
 exports.updateOne = base.updateOne(Test);

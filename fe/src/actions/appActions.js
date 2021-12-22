@@ -3,12 +3,12 @@ import { constants as c } from "../constants";
 function getHomeInfo() {
   return (dispatch) => {
     appServices.getHomeInfo().then((res) => {
-      if (res.status === "success") dispatch(success(res));
+      if (res.status === "success") dispatch(success(res.data));
       else dispatch(failure(res.message));
     });
   };
-  function success(info) {
-    return { type: c.GET_HOME_SUCCESS, info };
+  function success(data) {
+    return { type: c.GET_HOME_SUCCESS, data };
   }
   function failure(message) {
     return { type: c.GET_HOME_FAILURE, message };

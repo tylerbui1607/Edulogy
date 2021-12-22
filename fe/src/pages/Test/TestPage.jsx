@@ -6,10 +6,13 @@ import SubView from "./child/SubView";
 import MainView from "./child/MainView";
 import ScorePopup from './child/ScorePopup';
 import Loading from '../../components/Common/Loading';
+import Section from './child/Section';
 function TestPage(props) {
   let dispatch = useDispatch();
   let test = useSelector(state => state.test.test);
   let [score, setScore] = useState(0);
+  let [nQuestionsInSection, setNQuestionsInSection] = useState([]);
+  let [currentSection, setCurrentSection] = useState(0);
   let [listPart, setListPart] = useState([]);
   let [popupClass, setPopupClass] = useState("");
   let [mode, setMode] = useState(c.DO_TEST_MODE);
@@ -27,7 +30,7 @@ function TestPage(props) {
       return tanswers;
     }
   }
-  let trueAnswers = useMemo(() => getTrueAnswers(test), [test]);
+  //let trueAnswers = useMemo(() => getTrueAnswers(test), [test]);
   function handleAnswers(i) {
     if (mode === c.DO_TEST_MODE) {
       let lanswers = [...listAnswers];
@@ -49,69 +52,93 @@ function TestPage(props) {
     document.location.reload();
   }
   function handleSubmit() {
-    if (mode === c.DO_TEST_MODE) {
-      let s = 0;
-      for (let i = 0; i < trueAnswers.length; i++)
-        if (trueAnswers[i] === listAnswers[i])
-          s++;
-      setScore(s);
-      setPopupClass("active");
-      setMode(c.SUBMITED_MODE);
-    }
+    // if (mode === c.DO_TEST_MODE) {
+    //   let s = 0;
+    //   for (let i = 0; i < trueAnswers.length; i++)
+    //     if (trueAnswers[i] === listAnswers[i])
+    //       s++;
+    //   setScore(s);
+    //   setPopupClass("active");
+    //   setMode(c.SUBMITED_MODE);
+    // }
   }
   function closeScorePopup() {
     setPopupClass("")
   }
   useEffect(() => {
     if (!test)
-      dispatch(testActions.getTestById(props.match.params.id))
-    else {
-      document.title = test.name;
-      if (!listPart.length) {
-        let lpart = [-1, -1, -1, -1, -1, -1, -1, -1];
-        for (let i = 0; i < test.questions.length; i++) {
-          if (lpart[test.questions[i].part] === -1) {
-            lpart[test.questions[i].part] = i;
-          }
-        }
-        setListPart(lpart);
-        setCurrrentPart(test.questions[0].part)
-      }
-    }
-  }, [test]);
+      dispatch(testActions.getTestById(props.match.params.id));
+    document.getElementById("header").style.display = "none";
+    document.getElementById("footer").style.display = "none"
+  }, []);
+  console.log(test);
   return (
     test ?
-      <div className="test-page container">
-        <MainView
-          test={test}
-          mode={mode}
-          listPart={listPart}
-          listAnswers={listAnswers}
-          currentPart={currentPart}
-          currentQuestion={currentQuestion}
-          handleSubmit={handleSubmit}
-          handleAnswers={handleAnswers}
-          handleChangePart={handleChangePart}
-          handleChangeQuestion={handleChangeQuestion}
-        />
-        <SubView
-          test={test}
-          mode={mode}
-          score={score}
-          trueAnswers={trueAnswers}
-          listAnswers={listAnswers}
-          currentQuestion={currentQuestion}
-          handleSubmit={handleSubmit}
-          handleRedo={handleRedo}
-          handleChangeQuestion={handleChangeQuestion}
-        />
-        <ScorePopup
-          mode={mode}
-          score={score}
-          class={popupClass}
-          onClose={closeScorePopup}
-        />
-      </div>
+      <>
+        <div className="bottom">
+          <h4>Ielts reading sample 01</h4>
+          <button>
+            <i className="fas fa-chevron-down"></i>
+            &nbsp;
+            Danh sách câu hỏi
+          </button>
+        </div>
+        <div className="test-page container">
+          <div className="paragraph-display">
+            <h2>{test.sections[currentSection].paragraph.title}</h2>
+            {
+              test.sections[currentSection].paragraph.content.map(v =>
+                <div className="paragraph-content">
+                  {v}
+                </div>
+              )
+            }
+          </div>
+          <Section
+            onCalTotalQuestion={setNQuestionsInSection}
+            sectionId={currentSection}
+            questions={test.sections[currentSection].questions}
+          />
+          <div className="section-control">
+            <h4>Section {currentSection + 1}</h4>
+            <div className="row">
+              <button>
+                <i className="fas fa-chevron-left"></i>
+                &nbsp;
+                Trước
+              </button>
+              <button>
+                Sau
+                &nbsp;
+                <i className="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+          <ScorePopup
+            mode={mode}
+            score={score}
+            class={popupClass}
+            onClose={closeScorePopup}
+          />
+        </div>
+        <div className="top">
+          <button className="head-home">
+            <i className="fas fa-chevron-left"></i>
+            &nbsp;
+            Trang chủ
+          </button>
+          <div className="clock">
+            <i className="far fa-clock"></i>
+            &nbsp;
+            55:48
+          </div>
+          <button className="submit-btn">
+            Nộp bài
+            &nbsp;
+            <i className="fas fa-location-arrow"></i>
+          </button>
+        </div>
+      </>
       :
       <div className="test-page">
         <Loading />

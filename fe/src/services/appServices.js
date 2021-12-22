@@ -10,6 +10,7 @@ function getHomeInfo() {
   return fetch(`${c.apiUrl}/home`, requestOption)
     .then((res) => res.json())
     .then((json) => {
+      console.log(json);
       return json;
     });
 }

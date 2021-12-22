@@ -1,30 +1,22 @@
 const mongoose = require("mongoose");
 const joi = require("joi");
 
-const answerSchema = new mongoose.Schema(
-  {
-    content: String,
-    isTrue: Boolean,
-  },
-  {
-    versionKey: false,
-    _id: false,
-  }
-);
-
 const questionSchema = new mongoose.Schema(
   {
-    content: {
-      type: String,
-      trim: true,
-    },
-    explanation: String,
     type: String,
-    part: Number,
-    number: Number,
-    img: String,
-    script: String,
-    answers: [answerSchema],
+    guild: {
+      type: String,
+      default: "",
+    },
+    content: [String],
+    answers: [String],
+    trueAnswers: [String],
+    explain: [
+      {
+        type: String,
+        trim: true,
+      },
+    ],
   },
   {
     versionKey: false,
@@ -32,15 +24,15 @@ const questionSchema = new mongoose.Schema(
 );
 
 const validate = (question) => {
-  const schema = joi.object({
-    content: joi.string().min(10),
-    explanation: joi.string().min(10),
-    answers: joi.array().required(),
-    part: joi.number().min(1).max(7).required(),
-    img: joi.string(),
-    script: joi.string(),
-    type: joi.string(),
-  });
+  const schema = joi
+    .object({
+      content: joi.array().required(),
+      answers: joi.array().required(),
+      trueAnswers: joi.array().required(),
+      explain: joi.array().required(),
+      type: joi.string().required(),
+    })
+    .unknown(true);
   return schema.validate(question);
 };
 
