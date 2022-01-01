@@ -1,10 +1,10 @@
+import { useEffect, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useMemo } from "react";
 
 import { testActions } from "../../../actions/testActions";
 import { constants as c } from "../../../constants";
 
-export default function MatchingQuestion(props) {
+export default function CompleteTableQuestion(props) {
   const dispatch = useDispatch();
   const mode = useSelector(state => state.test.mode);
   const userAnswers = useSelector(state => state.test.userAnswers);
@@ -16,9 +16,11 @@ export default function MatchingQuestion(props) {
     trueAnswers,
     explain,
     nQuestions,
-    section,
     index,
+    section,
     from } = props;
+
+  let questionIndex = nQuestions.from - 1;
 
   const result = useMemo(() => {
     if (mode === c.DO_TEST_MODE)
@@ -32,20 +34,23 @@ export default function MatchingQuestion(props) {
     return trueAnswers.map(v => userAnswers[section][index].includes(v));
   }, [mode]);
 
-  function handleAnswers(a, i) {
-    let answers = {
-      index: i,
-      value: a,
-      type: c.MATCHING_PARAGRAPH
-    }
-    dispatch(testActions.answerQuestion(section, index, answers))
-  }
-
   function findHint(i) {
     dispatch({
       type: c.VIEW_HINT,
       hint: explain[i]
     })
+  }
+
+  function handleAnswers(a, i) {
+    dispatch(testActions.answerQuestion(
+      section,
+      index,
+      {
+        value: a,
+        index: i,
+        type: c.COMPLETE_TABLE,
+      }
+    ))
   }
 
   function createResultRow() {
@@ -56,11 +61,6 @@ export default function MatchingQuestion(props) {
           {
             trueAnswers.map((v, i) =>
               <div className="row">
-                <div className="true-answers">
-                  <strong className={result[i] ? "true" : "false"}>
-                    {v}
-                  </strong>
-                </div>
                 <div className="explain">
                   <button
                     onClick={() => findHint(i)}
@@ -80,6 +80,11 @@ export default function MatchingQuestion(props) {
                     </button>
                   }
                 </div>
+                <div className="true-answers">
+                  <strong className={result[i] ? "true" : "false"}>
+                    {v}
+                  </strong>
+                </div>
               </div>
             )
           }
@@ -88,31 +93,62 @@ export default function MatchingQuestion(props) {
     )
   }
 
-  function createContentRow(c, i) {
+  function createInputRow(c) {
+    let contentArr = c.split("_");
+    if (contentArr.length === 1)
+      return (
+        <td>
+          {contentArr[0]}
+        </td>
+      )
+    questionIndex++;
+    let indexInType = questionIndex - nQuestions.from;
     return (
-      <div className="row" key={nQuestions.from + i + "_" + i}>
-        <select answers_for={i} onChange={(e) => handleAnswers(e.target.value, i)}>
-          <option value={""}></option>
-          {
-            answers.map(v => <option value={v}>{v}</option>)
-          }
-        </select>
-        <label>{c}</label>
-      </div>
+      <td>
+        <div className="row">
+          <div className="number">{questionIndex}</div>
+          <div className="content">
+            {contentArr[0]}
+            <input
+              type="text"
+              onBlur={(e) => handleAnswers(e.target.value, indexInType)}
+            />
+            {contentArr[1]}
+          </div>
+        </div>
+      </td>
     )
   }
 
+  function createTableRow(c) {
+    let col = c.split("|");
+    return (
+      <tr>
+        {
+          col.map(v => createInputRow(v))
+        }
+      </tr>
+    )
+  }
+
+  useEffect(() => { console.log("hello") }, [])
+
   return (
-    <div className="question matching">
-      <h3>
-        Questions {nQuestions.from}-{nQuestions.to}
-      </h3>
-      <div className="guild">
-        {guild}
-      </div>
-      {
-        content.map((v, i) => createContentRow(v, i))
-      }
+    <div className="question complete-table">
+      <h3>Questions {nQuestions.from}-{nQuestions.to}</h3>
+      <div className="guild">{guild}</div>
+      <table>
+        <thead>
+          <tr>
+            {
+              content.map(v => <th>{v}</th>)
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {answers.map(v => createTableRow(v))}
+        </tbody>
+      </table>
       {
         mode === c.SUBMITED_MODE
         &&

@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 export default function Timer(props) {
+  let { time } = props;
   const [timer, setTimer] = useState({
-    remain: props.time * 60,
-    hour: Math.floor(props.time / 60) < 10
-      ? `0${Math.floor(props.time / 60)}`
-      : Math.floor(props.time / 60),
-    minute: Math.floor(props.time % 60) < 10
-      ? `0${Math.floor(props.time % 60)}`
-      : Math.floor(props.time % 60),
+    remain: time * 60,
+    minute: time < 10
+      ? `0${time}`
+      : time,
     second: "00"
   });
   function calcTimer() {
@@ -31,7 +29,9 @@ export default function Timer(props) {
   });
   return (
     <span className="timer">
-      {`${timer.hour} : ${timer.minute} : ${timer.second}`}
+      <i className="far fa-clock"></i>
+      &nbsp;
+      {`${timer.minute} : ${timer.second}`}
     </span>
   )
 }

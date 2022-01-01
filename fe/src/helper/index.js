@@ -83,12 +83,11 @@ async function xlsxToJson(file) {
       });
       workbook.SheetNames.forEach(function (sheetName) {
         console.log(workbook.Sheets[sheetName]);
-        var XL_row_object = XLSX.utils.sheet_to_row_object_array(
+        var XL_row_object = XLSX.utils.sheet_to_json(
           workbook.Sheets[sheetName]
         );
         if (XL_row_object.length > 0) {
           result = XL_row_object;
-          console.log(result);
           resolve(result);
         }
       });

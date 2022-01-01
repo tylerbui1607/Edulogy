@@ -17,57 +17,56 @@ export default function AddTestForm() {
   }
   const [questions, setQuestions] = useState([]);
   const [info, setInfo] = useState({});
+
+  function extractQuestion(q) {
+    return {
+      sectionID: q["section ID"],
+      type: q["question type"],
+      guild: q["guild"],
+      content: q["content"] ? q["content"].split("|") : [],
+      answers: q["answers"] ? q["answers"].split("|") : [],
+      trueAnswers: q["true answers"] ? q["true answers"].split("|") : [],
+      image: q["images"] ? q["images"].split("|") : [],
+      explain: q.explain ? q.explain.split("|") : [],
+      title: q.title
+    }
+  }
+
+  function extractSection(s) {
+    return {
+      paragraph: {
+        title: s["section title"] ? s["section title"] : "",
+        content: s["section content"] ? s["section content"].split("|") : []
+      }
+    }
+  }
+
   async function handleFileSelect(e) {
     var rs = await xlsxToJson(e.target.files[0]);
-    setQuestions(rs);
+    console.log(rs);
+    let addInfo = {
+      sections: [],
+      questions: [],
+    };
+    for (let d of rs) {
+      if (d["data type"].trim() === "section")
+        addInfo.sections.push(extractSection(d))
+      if (d["data type"].trim() === "question")
+        addInfo.questions.push(extractQuestion(d))
+    }
+
+    setInfo({ ...info, ...addInfo })
   }
   function handleSubmit() {
-    if (!questions || !questions.length) {
-      dispatch(appActions.changePopup(c.AUTOHIDE_POPUP, "Vui lòng cung cấp đầy đủ thông tin"));
-      return;
-    }
-    let qs = questions.map(v => {
-      let answers = [];
-      if (v.A)
-        answers.push({
-          content: v.A,
-          isTrue: v.answer === "A"
-        });
-      if (v.B)
-        answers.push({
-          content: v.B,
-          isTrue: v.answer === "B"
-        });
-      if (v.C)
-        answers.push({
-          content: v.C,
-          isTrue: v.answer === "C"
-        });
-      if (v.D)
-        answers.push({
-          content: v.D,
-          isTrue: v.answer === "D"
-        });
-      return {
-        content: v.content,
-        part: v.part,
-        explanation: v.explanation,
-        img: v.image,
-        script: v.script,
-        answers
-      }
-    })
-    console.log({
-      ...info,
-      questions: qs,
-      img: imgLink[info.type]
-    });
-    dispatch(appActions.changePopup(c.MESSAGE_POPUP, "", { status: c.LOADING }))
-    dispatch(a.addTest({
-      ...info,
-      questions: qs,
-      img: imgLink[info.type]
-    }))
+    console.log(info);
+    dispatch(a.addTest({ ...info, img: "https://i.ibb.co/PhJ6rCS/14900.png" }))
+    return;
+    // dispatch(appActions.changePopup(c.MESSAGE_POPUP, "", { status: c.LOADING }))
+    // dispatch(a.addTest({
+    //   ...info,
+    //   questions: qs,
+    //   img: imgLink[info.type]
+    // }))
   }
   function handleInputChange(e) {
     setInfo({ ...info, [e.target.name]: e.target.value });
@@ -84,55 +83,30 @@ export default function AddTestForm() {
         name="name"
         id="name"
       />
-      <label htmlFor="type">Loại</label>
-      <select name="type" id="type" onChange={(e) => {
-        setInfo({
-          ...info,
-          type: e.target.selectedOptions[0].value
-        })
-      }}>
-        <option value="mini">Mini</option>
-        <option value="part1">Part I</option>
-        <option value="part2">Part II</option>
-        <option value="part5">Part V</option>
-        <option value="part6">Part VI</option>
-        <option value="part7">Part VII</option>
-      </select>
       <div className="row">
-        <label>Level</label>
+        <label>Loại</label>
         <div>
           <div className="row">
             <input
               type="checkbox"
-              checked={info.level === "250-500"}
+              checked={info.type === "reading"}
               onChange={handleInputChange}
-              name="level"
-              id="250-500"
-              value="250-500"
+              name="type"
+              id="reading"
+              value="reading"
             />
-            <label htmlFor="250-500">250 - 500</label>
+            <label htmlFor="reading">Reading</label>
           </div >
           <div className="row">
             <input
               type="checkbox"
-              checked={info.level === "500-750"}
+              checked={info.type === "listening"}
               onChange={handleInputChange}
-              name="level"
-              id="500-750"
-              value="500-750"
+              name="type"
+              id="listening"
+              value="listening"
             />
-            <label htmlFor="500-750">500 - 750</label>
-          </div>
-          <div className="row">
-            <input
-              type="checkbox"
-              checked={info.level === "750-990"}
-              onChange={handleInputChange}
-              name="level"
-              id="750-990"
-              value="750-990"
-            />
-            <label htmlFor="750-990">750 - 990</label>
+            <label htmlFor="listening">Listening</label>
           </div>
         </div>
       </div>
@@ -145,7 +119,7 @@ export default function AddTestForm() {
         id="time"
       />
       <div className="row">
-        <label htmlFor="file">Test file</label>
+        <label htmlFor="file">Excel file</label>
         <input
           onChange={handleFileSelect}
           type="file"

@@ -4,20 +4,19 @@ import { useMemo } from "react";
 import { testActions } from "../../../actions/testActions";
 import { constants as c } from "../../../constants";
 
-export default function MatchingQuestion(props) {
+export default function CompleteDiagramQuestion(props) {
   const dispatch = useDispatch();
   const mode = useSelector(state => state.test.mode);
   const userAnswers = useSelector(state => state.test.userAnswers);
 
   const {
-    content,
-    answers,
     guild,
+    images,
     trueAnswers,
     explain,
     nQuestions,
-    section,
     index,
+    section,
     from } = props;
 
   const result = useMemo(() => {
@@ -32,20 +31,23 @@ export default function MatchingQuestion(props) {
     return trueAnswers.map(v => userAnswers[section][index].includes(v));
   }, [mode]);
 
-  function handleAnswers(a, i) {
-    let answers = {
-      index: i,
-      value: a,
-      type: c.MATCHING_PARAGRAPH
-    }
-    dispatch(testActions.answerQuestion(section, index, answers))
-  }
-
   function findHint(i) {
     dispatch({
       type: c.VIEW_HINT,
       hint: explain[i]
     })
+  }
+
+  function handleAnswers(a, i) {
+    dispatch(testActions.answerQuestion(
+      section,
+      index,
+      {
+        value: a,
+        index: i,
+        type: c.COMPLETE_DIAGRAM
+      }
+    ))
   }
 
   function createResultRow() {
@@ -56,11 +58,6 @@ export default function MatchingQuestion(props) {
           {
             trueAnswers.map((v, i) =>
               <div className="row">
-                <div className="true-answers">
-                  <strong className={result[i] ? "true" : "false"}>
-                    {v}
-                  </strong>
-                </div>
                 <div className="explain">
                   <button
                     onClick={() => findHint(i)}
@@ -80,6 +77,11 @@ export default function MatchingQuestion(props) {
                     </button>
                   }
                 </div>
+                <div className="true-answers">
+                  <strong className={result[i] ? "true" : "false"}>
+                    {v}
+                  </strong>
+                </div>
               </div>
             )
           }
@@ -88,30 +90,29 @@ export default function MatchingQuestion(props) {
     )
   }
 
-  function createContentRow(c, i) {
+  function createContentRow(i) {
     return (
-      <div className="row" key={nQuestions.from + i + "_" + i}>
-        <select answers_for={i} onChange={(e) => handleAnswers(e.target.value, i)}>
-          <option value={""}></option>
-          {
-            answers.map(v => <option value={v}>{v}</option>)
-          }
-        </select>
-        <label>{c}</label>
+      <div className="row">
+        <div className="number">
+          {nQuestions.from + i}
+        </div>
+        <input
+          type="text"
+          onBlur={(e) => handleAnswers(e.target.value, i)}
+        />
       </div>
     )
   }
 
   return (
-    <div className="question matching">
-      <h3>
-        Questions {nQuestions.from}-{nQuestions.to}
-      </h3>
-      <div className="guild">
-        {guild}
+    <div className="question complete-diagram">
+      <h3>Questions {nQuestions.from}-{nQuestions.to}</h3>
+      <div className="guild">{guild}</div>
+      <div className="image">
+        <img src={images[0]} alt="" />
       </div>
       {
-        content.map((v, i) => createContentRow(v, i))
+        trueAnswers.map((v, i) => createContentRow(i))
       }
       {
         mode === c.SUBMITED_MODE

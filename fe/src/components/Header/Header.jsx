@@ -37,7 +37,7 @@ function Header(props) {
         <div className="nav container" id="header">
           <div className="logo">
             <a href="/">
-              <img src="https://i.ibb.co/vLDR33T/cloud-logo-vector-design-template-260nw-1812087388.jpg" alt="" />
+              <img src="/img/logo (1).png" alt="" />
             </a>
           </div>
           <div className="dropdown-container">

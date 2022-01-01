@@ -9,8 +9,11 @@ const questionSchema = new mongoose.Schema(
       default: "",
     },
     content: [String],
+    images: [String],
     answers: [String],
     trueAnswers: [String],
+    from: Number,
+    title: String,
     explain: [
       {
         type: String,

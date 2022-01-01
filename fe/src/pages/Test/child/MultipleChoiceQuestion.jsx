@@ -2,9 +2,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useMemo } from "react";
 
 import { testActions } from "../../../actions/testActions";
-import { constants as c } from "../../../constants";
+import { constants } from "../../../constants";
 
-export default function MatchingQuestion(props) {
+export default function MultipleChoiceQuestion(props) {
   const dispatch = useDispatch();
   const mode = useSelector(state => state.test.mode);
   const userAnswers = useSelector(state => state.test.userAnswers);
@@ -16,12 +16,12 @@ export default function MatchingQuestion(props) {
     trueAnswers,
     explain,
     nQuestions,
-    section,
     index,
+    section,
     from } = props;
 
   const result = useMemo(() => {
-    if (mode === c.DO_TEST_MODE)
+    if (mode === constants.DO_TEST_MODE)
       return [];
 
     if (!userAnswers[section]) return [];
@@ -32,18 +32,13 @@ export default function MatchingQuestion(props) {
     return trueAnswers.map(v => userAnswers[section][index].includes(v));
   }, [mode]);
 
-  function handleAnswers(a, i) {
-    let answers = {
-      index: i,
-      value: a,
-      type: c.MATCHING_PARAGRAPH
-    }
-    dispatch(testActions.answerQuestion(section, index, answers))
+  function handleAnswers(a) {
+    dispatch(testActions.answerQuestion(section, index, a));
   }
 
   function findHint(i) {
     dispatch({
-      type: c.VIEW_HINT,
+      type: constants.VIEW_HINT,
       hint: explain[i]
     })
   }
@@ -72,7 +67,7 @@ export default function MatchingQuestion(props) {
                   {
                     from &&
                     <button
-                      onClick={() => dispatch({ type: c.FORWARD_AUDIO, time: from })}
+                      onClick={() => dispatch({ type: constants.FORWARD_AUDIO, time: from })}
                     >
                       <i className="fas fa-headphones-alt"></i>
                       &nbsp;
@@ -90,20 +85,21 @@ export default function MatchingQuestion(props) {
 
   function createContentRow(c, i) {
     return (
-      <div className="row" key={nQuestions.from + i + "_" + i}>
-        <select answers_for={i} onChange={(e) => handleAnswers(e.target.value, i)}>
-          <option value={""}></option>
-          {
-            answers.map(v => <option value={v}>{v}</option>)
-          }
-        </select>
-        <label>{c}</label>
+      <div className="row">
+        <div className="answers">{answers[i]}</div>
+        <input
+          type="checkbox"
+          value={answers[i]} id={c}
+          onChange={() => handleAnswers(answers[i])}
+          disabled={mode === constants.SUBMITED_MODE}
+        />
+        <label htmlFor={c}>{c}</label>
       </div>
     )
   }
 
   return (
-    <div className="question matching">
+    <div className="question multiple-choice">
       <h3>
         Questions {nQuestions.from}-{nQuestions.to}
       </h3>
@@ -114,7 +110,7 @@ export default function MatchingQuestion(props) {
         content.map((v, i) => createContentRow(v, i))
       }
       {
-        mode === c.SUBMITED_MODE
+        mode === constants.SUBMITED_MODE
         &&
         createResultRow()
       }

@@ -49,7 +49,7 @@ export default function TestSection(props) {
         <AddTestForm />
       </div>
       <TestsTable
-        tests={props.tests}
+        tests={[]}
         onDelete={handleDelete}
         onEdit={handleShowEdit}
       />

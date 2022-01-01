@@ -127,10 +127,20 @@ function updateTest(id, test) {
   }
 }
 
+function answerQuestion(s, q, a) {
+  return {
+    type: c.ANSWER_QUESTION,
+    s,
+    q,
+    a,
+  };
+}
+
 export const testActions = {
   getTest,
   addTest,
   deleteTest,
   getTestById,
   updateTest,
+  answerQuestion,
 };

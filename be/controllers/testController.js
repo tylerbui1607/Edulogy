@@ -1,5 +1,6 @@
 const base = require("./baseController");
 const { Test } = require("../models/testModel");
+const { Section } = require("../models/sectionModel");
 const { Question, validate } = require("../models/questionModel");
 const _ = require("lodash");
 exports.getOne = async (req, res, next) => {
@@ -63,7 +64,40 @@ exports.getAll = async (req, res, next) => {
     next(error);
   }
 };
-exports.addOne = base.addOne(Test);
+exports.addOne = async (req, res) => {
+  let testInfo = {
+    name: req.body.name,
+    time: req.body.time,
+    type: req.body.type,
+    img: req.body.img,
+  };
+  try {
+    let test = await Test.create(testInfo);
+    let sections = [];
+    for (let s of req.body.sections) {
+      let section = await Section.create(s);
+      test.sections.push(section._id);
+      sections.push(section);
+    }
+    for (let q of req.body.questions) {
+      let question = await Question.create(q);
+      sections[q.sectionID].questions.push(question._id);
+    }
+    for (let s of sections) await s.save();
+    await test.save();
+    res.status(200).json({
+      status: "success",
+      data: test,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({
+      status: "fail",
+      message: "Something went wrong please try again latter !",
+    });
+    return;
+  }
+};
 // exports.addOne = async (req, res, next) => {
 //   let test = {
 //     name: req.body.name,
