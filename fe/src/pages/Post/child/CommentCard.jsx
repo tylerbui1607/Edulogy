@@ -2,22 +2,35 @@ import { useDispatch, useSelector } from "react-redux";
 import { postActions as a } from "../../../actions/postActions";
 export default function CommentCard(props) {
   const dispatch = useDispatch();
-  const { user, content, like, dislike, date } = props;
+
   const profile = useSelector(store => store.authentication.user);
+
+  const { user, content, like, dislike, date } = props;
+
+  const frames = {
+    rook: "/img/9csaYrM.png",
+    bishop: "/img/XAXA03P.png",
+    knight: "/img/Lwsg9sd.png",
+    pawn: "/img/f1qYFeh.png"
+  }
+
   function handleLike() {
     if (profile && like.indexOf(profile._id) !== -1)
       return;
     dispatch(a.likeComment(props._id));
   }
+
   function handleDislike() {
     if (profile && dislike.indexOf(profile._id) !== -1)
       return;
     dispatch(a.dislikeComment(props._id));
   }
+
   return (
     <div className="comment-card">
       <div>
         <div className="avt">
+          <img src={frames[user.badge]} alt="" />
           {user.name[0]}
         </div>
         <div className="action">
@@ -51,7 +64,9 @@ export default function CommentCard(props) {
         </div>
       </div>
       <div>
-        <span>{user.name}</span>
+        <span>
+          {user.name}
+        </span>
         &nbsp;
         <label>vào {date}</label>
         <div className="content" dangerouslySetInnerHTML={{ __html: content }}>

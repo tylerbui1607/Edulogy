@@ -48,16 +48,14 @@ function Header(props) {
                 +
                 (currentActive === "test" ? " active" : "")
               }>
-                <a href="/de-thi?type=mini" className="dropdown-item">Mini test</a>
-                <a href="/de-thi?type=part1" className="dropdown-item"> <span>Part I:</span> Hình ảnh</a>
-                <a href="/de-thi?type=part2" className="dropdown-item"> <span>Part II:</span> Hội thoại</a>
-                <a href="/de-thi?type=part5" className="dropdown-item"> <span>Part V:</span> Điền khuyết</a>
-                <a href="/de-thi?type=part6" className="dropdown-item"> <span>Part VI:</span> Điền từ</a>
-                <a href="/de-thi?type=part7" className="dropdown-item"> <span>Part VII:</span>  Điền khuyết</a>
+                <a href="/de-thi?type=reading" className="dropdown-item">Reading test</a>
+                <a href="/de-thi?type=listening" className="dropdown-item">Listening test</a>
+                <a href="/de-thi" className="dropdown-item">Writing test</a>
+                <a href="/de-thi" className="dropdown-item">Speaking test</a>
               </div>
             </div>
             <div className="dropdown">
-              <a href="/thong-tin" className="dropdown-btn">Thông tin Toeic</a>
+              <a href="/thong-tin" className="dropdown-btn">Thông tin Ielts</a>
             </div>
             <div className="dropdown">
               <a href="/forum" className="dropdown-btn">Diễn đàng</a>

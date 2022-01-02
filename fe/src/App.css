@@ -976,15 +976,23 @@ button.dropdown-item {
     align-items: center;
     justify-content: space-between; }
   .post .post__avt {
-    width: 2.5em;
-    height: 2.5em;
+    width: 40px;
+    height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0b6aa4;
-    color: white;
-    font-weight: 600;
-    border-radius: 2px; }
+    color: #0072b9;
+    border-radius: 2px;
+    font-size: 18px;
+    position: relative;
+    font-weight: bolder; }
+    .post .post__avt img {
+      position: absolute;
+      width: calc(100% + 10px);
+      height: calc(100% + 10px);
+      object-fit: contain;
+      top: -5px;
+      left: -5px; }
   .post .post__preview {
     margin-top: 10px;
     font-size: 500;
@@ -1993,8 +2001,12 @@ button.dropdown-item {
   display: flex;
   justify-content: space-between; }
   .banner label {
-    width: 4em;
+    text-align: center;
+    width: 3em;
+    font-size: 22px;
     display: block; }
+    .banner label i {
+      color: #929292; }
   .banner .category {
     width: 265px;
     border-radius: 0.25em;
@@ -2002,12 +2014,12 @@ button.dropdown-item {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; }
+    justify-content: space-around; }
     .banner .category a {
+      font-size: 18px;
       display: flex;
       color: #686868;
-      font-size: 16px;
-      padding: 0.75em 0.5em; }
+      padding: 0.875em 0.5em; }
     .banner .category a:hover {
       background: #ececec; }
   .banner .img-container {
@@ -2258,11 +2270,18 @@ button.dropdown-item {
         height: 2.5em;
         font-weight: 600;
         border-radius: 2px;
-        color: white;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #0b6aa4; }
+        color: #0b6aa4;
+        position: relative; }
+        .post-page .main-view > div:first-of-type .main-view__post__avt img {
+          position: absolute;
+          width: calc(100% + 10px);
+          height: calc(100% + 10px);
+          object-fit: contain;
+          top: -5px;
+          left: -5px; }
       .post-page .main-view > div:first-of-type .main-view__post__action {
         display: flex;
         flex-direction: column;
@@ -2335,15 +2354,23 @@ button.dropdown-item {
     .comment-card > div:first-of-type .avt {
       width: 26px;
       height: 26px;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #4a95c6;
-      color: white;
-      border-radius: 2px; }
+      color: #4a95c6;
+      border-radius: 2px;
+      position: relative; }
+      .comment-card > div:first-of-type .avt img {
+        position: absolute;
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        object-fit: contain;
+        top: -5px;
+        left: -5px; }
     .comment-card > div:first-of-type .action {
+      margin-top: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2523,17 +2550,20 @@ button.dropdown-item {
         align-items: center;
         border-bottom: 1px solid #757575; }
       .admin-page .admin-section .table-view .name {
-        width: 30%;
+        width: 40%;
         padding-right: 0.5em;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis; }
       .admin-page .admin-section .table-view .level {
-        width: 20%; }
+        width: 15%;
+        text-align: center; }
       .admin-page .admin-section .table-view .number-questions {
-        width: 15%; }
+        width: 15%;
+        text-align: center; }
       .admin-page .admin-section .table-view .time {
-        width: 20%; }
+        width: 15%;
+        text-align: center; }
       .admin-page .admin-section .table-view .action {
         width: 15%;
         display: flex; }
@@ -2610,7 +2640,7 @@ button.dropdown-item {
     .admin-page .report-view .info {
       width: 20%;
       min-width: 160px;
-      height: 5em;
+      height: 5.5em;
       padding: 0.5em;
       box-shadow: 0 0 2px 0 #888888;
       display: flex;

@@ -1,12 +1,20 @@
 export default function Post(props) {
-  const { title, dislike, like, imgs, content, view, user, comments, _id, date } = props;
+  const { title, dislike, like, content, view, user, comments, _id, date } = props;
+  const frames = {
+    rook: "/img/9csaYrM.png",
+    bishop: "/img/XAXA03P.png",
+    knight: "/img/Lwsg9sd.png",
+    pawn: "/img/f1qYFeh.png"
+  }
   function handleClick() {
     window.location.href = `/bai-viet/${_id}`;
   }
+  console.log(user);
   return (
     <div className="post" onClick={handleClick}>
       <div className="show_flex w100">
         <div className="post__avt" >
+          <img src={frames[user.badge]} alt="" />
           {user.name[0]}
         </div>
         <div className="post__main-info">

@@ -15,16 +15,17 @@ export default function AddTestForm() {
     "part6": "https://i.ibb.co/PhJ6rCS/14900.png",
     "part7": "https://i.ibb.co/PhJ6rCS/14900.png"
   }
-  const [questions, setQuestions] = useState([]);
   const [info, setInfo] = useState({});
 
   function extractQuestion(q) {
+    console.log(q);
+    q["true answers"] = q["true answers"].toString()
     return {
       sectionID: q["section ID"],
       type: q["question type"],
       guild: q["guild"],
       content: q["content"] ? q["content"].split("|") : [],
-      answers: q["answers"] ? q["answers"].split("|") : [],
+      answers: q["answers"] ? (q["question type"] !== c.COMPLETE_TABLE ? q["answers"].split("|") : q["answers"].split("/")) : [],
       trueAnswers: q["true answers"] ? q["true answers"].split("|") : [],
       image: q["images"] ? q["images"].split("|") : [],
       explain: q.explain ? q.explain.split("|") : [],
@@ -57,17 +58,14 @@ export default function AddTestForm() {
 
     setInfo({ ...info, ...addInfo })
   }
+
   function handleSubmit() {
     console.log(info);
-    dispatch(a.addTest({ ...info, img: "https://i.ibb.co/PhJ6rCS/14900.png" }))
+    dispatch(appActions.changePopup(c.MESSAGE_POPUP, "", { status: c.LOADING }))
+    dispatch(a.addTest({ ...info }))
     return;
-    // dispatch(appActions.changePopup(c.MESSAGE_POPUP, "", { status: c.LOADING }))
-    // dispatch(a.addTest({
-    //   ...info,
-    //   questions: qs,
-    //   img: imgLink[info.type]
-    // }))
   }
+
   function handleInputChange(e) {
     setInfo({ ...info, [e.target.name]: e.target.value });
   }
@@ -83,33 +81,24 @@ export default function AddTestForm() {
         name="name"
         id="name"
       />
-      <div className="row">
-        <label>Loại</label>
-        <div>
-          <div className="row">
-            <input
-              type="checkbox"
-              checked={info.type === "reading"}
-              onChange={handleInputChange}
-              name="type"
-              id="reading"
-              value="reading"
-            />
-            <label htmlFor="reading">Reading</label>
-          </div >
-          <div className="row">
-            <input
-              type="checkbox"
-              checked={info.type === "listening"}
-              onChange={handleInputChange}
-              name="type"
-              id="listening"
-              value="listening"
-            />
-            <label htmlFor="listening">Listening</label>
-          </div>
-        </div>
-      </div>
+      <label htmlFor="name">Ảnh:</label>
+      <input
+        onChange={handleInputChange}
+        value={info.img}
+        autoComplete="off"
+        type="text"
+        name="img"
+        id="img"
+      />
+      <label htmlFor="name">Link script:</label>
+      <input
+        onChange={handleInputChange}
+        value={info.script}
+        autoComplete="off"
+        type="text"
+        name="script"
+        id="script"
+      />
       <label htmlFor="time">Thời gian làm bài: </label>
       <input
         onChange={handleInputChange}
@@ -118,6 +107,33 @@ export default function AddTestForm() {
         name="time"
         id="time"
       />
+      <div className="row" style={{ alignItems: "center" }}>
+        <label style={{ minWidth: "4.25em" }}>Loại</label>
+        <div className="row" style={{ marginTop: 0, margin: "0.25em 0" }}>
+          <div className="row" style={{ alignItems: "center", marginTop: 0 }}>
+            <input
+              type="checkbox"
+              checked={info.type === "reading"}
+              onChange={handleInputChange}
+              name="type"
+              id="reading"
+              value="reading"
+            />
+            <label htmlFor="reading" style={{ minWidth: "4em" }}>Reading</label>
+          </div >
+          <div className="row" style={{ alignItems: "center", marginTop: 0 }}>
+            <input
+              type="checkbox"
+              checked={info.type === "listening"}
+              onChange={handleInputChange}
+              name="type"
+              id="listening"
+              value="listening"
+            />
+            <label htmlFor="listening" style={{ minWidth: "4em" }}>Listening</label>
+          </div>
+        </div>
+      </div>
       <div className="row">
         <label htmlFor="file">Excel file</label>
         <input

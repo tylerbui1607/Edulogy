@@ -34,7 +34,7 @@ exports.getAll = async (req, res) => {
       })
       .limit(pageSize)
       .skip((page - 1) * pageSize)
-      .populate("user", "name -_id")
+      .populate("user", "name badge -_id")
       .lean();
     res.status(200).json({
       status: "success",
@@ -79,10 +79,10 @@ exports.getOne = async (req, res) => {
         path: "comments",
         populate: {
           path: "user",
-          select: "name",
+          select: "name badge",
         },
       })
-      .populate("user", "name");
+      .populate("user", "name badge");
     if (!post) {
       res.status(404).json({
         status: "fail",

@@ -50,6 +50,12 @@ function answerQuestion(ca, s, q, a) {
 
 export function test(state = initialState, action) {
   switch (action.type) {
+    case "CHANGE_TEST_PAGE":
+      return {
+        ...state,
+        test: [],
+        status: c.LOADING,
+      };
     case c.GET_TEST_SUCCESS:
       return {
         ...state,

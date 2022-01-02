@@ -7,13 +7,10 @@ export default function UpdateTestForm(props) {
   console.log(props);
   const dispatch = useDispatch();
   const [info, setInfo] = useState({ ...props.test });
+  console.log(info)
   const typeName = {
-    "mini": "Mini test",
-    "part1": "Part I",
-    "part2": "Part II",
-    "part5": "Part V",
-    "part6": "Part VI",
-    "part7": "Part VII",
+    "reading": "Reading Test",
+    "listening": "Listening Test",
   }
   function handleInputChange(e) {
     console.log({
@@ -30,7 +27,7 @@ export default function UpdateTestForm(props) {
   return (
     <div className="modal active">
       <div className="info-popup">
-        <form id="updateForm" encType="multipart/form-data">
+        <form id="updateForm" encType="multipart/form-data" style={{ minHeight: "unset" }}>
           <h3>Thông tin test</h3>
           <div className="main-info-view">
             <div className="col">
@@ -54,54 +51,31 @@ export default function UpdateTestForm(props) {
                 disabled={true}
                 onChange={handleInputChange}
               />
-              <div className="row">
-                <label>Level</label>
-                <div>
-                  <div className="row">
-                    <input
-                      name="level"
-                      type="checkbox"
-                      id="new-250-500"
-                      value="250-500"
-                      onChange={handleInputChange}
-                      checked={info.level === "250-500"}
-                    />
-                    <label htmlFor="new-250-500">250 - 500</label>
-                  </div >
-                  <div className="row">
-                    <input
-                      type="checkbox"
-                      name="level"
-                      id="new-500-750"
-                      value="500-750"
-                      onChange={handleInputChange}
-                      checked={info.level === "500-750"}
-                    />
-                    <label htmlFor="new-500-750">500 - 750</label>
-                  </div>
-                  <div className="row">
-                    <input
-                      type="checkbox"
-                      name="level"
-                      id="new-750-990"
-                      value="750-990"
-                      onChange={handleInputChange}
-                      checked={info.level === "750-990"}
-                    />
-                    <label htmlFor="new-750-990">750 - 990</label>
-                  </div>
-                </div>
-              </div>
+              <label htmlFor="new-img">Link script:</label>
+              <input
+                type="text"
+                name="script"
+                id="new-script"
+                value={info.script}
+                onChange={handleInputChange}
+              />
             </div>
             <div className="col">
-              <label htmlFor="questions">Số lượng câu hỏi: </label>
+              <label htmlFor="questions">Số lượng section: </label>
               <input
                 type="text"
                 name="questions"
                 id="questions"
                 readOnly="readonly"
                 disabled={true}
-                value={info.questions ? info.questions.length : 0}
+                value={info.sections ? info.sections.length : 0}
+              />
+              <label htmlFor="questions">Ảnh: </label>
+              <input
+                type="text"
+                name="img"
+                id="img"
+                value={info.img ? info.img : ""}
               />
               <label htmlFor="new-time">Thời gian làm bài: </label>
               <input
@@ -111,37 +85,6 @@ export default function UpdateTestForm(props) {
                 value={info.time}
                 onChange={handleInputChange}
               />
-            </div>
-          </div>
-          <div className="list-questions-view">
-            <h3 style={{ marginTop: "0.5em" }}>Danh sách câu hỏi</h3>
-            <div className="header">
-              <div className="index">
-                STT
-              </div>
-              <div className="part">
-                Part
-              </div>
-              <div className="content">
-                Content
-              </div>
-            </div>
-            <div className="data-row-container">
-              {
-                info.questions ? info.questions.map((v, i) =>
-                  <div className="data-row" key={i}>
-                    <div className="index">
-                      {i + 1}
-                    </div>
-                    <div className="part">
-                      {v.part}
-                    </div>
-                    <div className="content">
-                      {v.content ? v.content : "[No content]"}
-                    </div>
-                  </div>
-                ) : <></>
-              }
             </div>
           </div>
           <div style={{ display: "flex" }}>

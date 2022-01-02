@@ -13,7 +13,7 @@ export default function InfoCard(props) {
       </div>
       <div className="update-time">
         <i style={{ color: props.color }} className="far fa-calendar-alt"></i>
-        29/06/2021
+        29/12/2021
       </div>
     </div>
   )

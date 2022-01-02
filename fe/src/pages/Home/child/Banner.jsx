@@ -8,12 +8,22 @@ function Banner() {
         <img className="mobile-display" src="/img/banner3.png" alt="" />
       </div>
       <div className="category">
-        <a href="/de-thi?type=mini">Mini test</a>
-        <a href="/de-thi?type=part1" > <label>Part I:</label> Hình ảnh</a>
-        <a href="/de-thi?type=part2" > <label>Part II:</label> Hội thoại</a>
-        <a href="/de-thi?type=part5" > <label>Part V:</label> Điền khuyết</a>
-        <a href="/de-thi?type=part6" > <label>Part VI:</label> Điền từ</a>
-        <a href="/de-thi?type=part7" > <label>Part VII:</label>  Điền khuyết</a>
+        <a href="/de-thi?type=reading" >
+          <label><i className="fas fa-glasses"></i></label>
+          Reading Test
+        </a>
+        <a href="/de-thi?type=listening" >
+          <label><i className="fas fa-headphones-alt"></i></label>
+          Listening Test
+        </a>
+        <a href="/de-thi" >
+          <label><i className="fas fa-pencil-alt"></i></label>
+          Writing Test
+        </a>
+        <a href="/de-thi" >
+          <label><i className="fas fa-microphone-alt"></i></label>
+          Speaking Test
+        </a>
       </div>
     </div>
   )

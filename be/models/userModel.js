@@ -31,8 +31,12 @@ const userSchema = new mongoose.Schema(
     },
     badge: {
       type: String,
-      default: "pawn"
-    }
+      default: "pawn",
+    },
+    score: {
+      type: Number,
+      default: 0,
+    },
   },
   {
     versionKey: false,

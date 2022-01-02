@@ -43,6 +43,7 @@ exports.getAll = async (req, res, next) => {
 
     let doc = await Test.find(type)
       .select("level img time name type")
+      .sort({ _id: -1 })
       .limit(pagesize)
       .skip((page - 1) * pagesize)
       .lean();
@@ -70,6 +71,7 @@ exports.addOne = async (req, res) => {
     time: req.body.time,
     type: req.body.type,
     img: req.body.img,
+    script: req.body.script,
   };
   try {
     let test = await Test.create(testInfo);

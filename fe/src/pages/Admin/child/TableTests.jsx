@@ -1,16 +1,16 @@
 export default function TestsTable(props) {
   return (
-    <div className="table-view">
+    <div className="table-view" style={{ height: "454px" }}>
       <h3>Danh sách test</h3>
       <div className="header">
         <div className="name">
           Tên test
         </div>
         <div className="level">
-          Level
+          Loại
         </div>
         <div className="number-questions">
-          Câu hỏi
+          Số section
         </div>
         <div className="time">
           Thời gian
@@ -28,10 +28,10 @@ export default function TestsTable(props) {
                   {v.name}
                 </div>
                 <div className="level">
-                  {v.level}
+                  {v.type === "reading" ? "Reading" : "Listening"}
                 </div>
                 <div className="number-questions">
-                  {v.questions.length}
+                  {v.sections.length}
                 </div>
                 <div className="time">
                   {v.time}

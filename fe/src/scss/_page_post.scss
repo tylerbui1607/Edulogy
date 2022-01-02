@@ -18,11 +18,19 @@
         height: 2.5em;
         font-weight: 600;
         border-radius: 2px;
-        color: white;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #0b6aa4;
+        color: #0b6aa4;
+        position: relative;
+        img {
+          position: absolute;
+          width: calc(100% + 10px);
+          height: calc(100% + 10px);
+          object-fit: contain;
+          top: -5px;
+          left: -5px;
+        }
       }
       .main-view__post__action {
         display: flex;
@@ -115,16 +123,25 @@
     .avt {
       width: 26px;
       height: 26px;
-      font-size: 13px;
-      font-weight: 600;
+      font-size: 14px;
+      font-weight: 700;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #4a95c6;
-      color: white;
+      color: #4a95c6;
       border-radius: 2px;
+      position: relative;
+      img {
+        position: absolute;
+        width: calc(100% + 10px);
+        height: calc(100% + 10px);
+        object-fit: contain;
+        top: -5px;
+        left: -5px;
+      }
     }
     .action {
+      margin-top: 5px;
       display: flex;
       flex-direction: column;
       align-items: center;

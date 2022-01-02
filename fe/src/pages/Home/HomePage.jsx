@@ -19,7 +19,7 @@ function HomePage() {
     setCurrentLevel(lv);
   }
   useEffect(() => {
-    document.title = "Edulogy - Trang chủ"
+    document.title = "The Mockingbird - Luyện thi ielts trực tuyến"
     if (homeInfo.status === c.LOADING)
       dispatch(appActions.getHomeInfo());
     console.log(homeInfo)
@@ -37,15 +37,15 @@ function HomePage() {
               <Banner />
               <SectionIntro />
               <div className="row">
-                <span>LUYỆN THI TOEIC MIỄN PHÍ</span>
+                <span>LUYỆN THI IELTS MIỄN PHÍ</span>
                 <div className="flex">
                   <button
-                    className={currentLevel === "level1" ? "active" : ""}
+                    className={currentLevel === "reading" ? "active" : ""}
                     onClick={() => handleChangeLevel("reading")}>
                     Reading
                   </button>
                   <button
-                    className={currentLevel === "level2" ? "active" : ""}
+                    className={currentLevel === "listening" ? "active" : ""}
                     onClick={() => handleChangeLevel("listening")}>
                     Listening
                   </button>

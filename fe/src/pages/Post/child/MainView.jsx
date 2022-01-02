@@ -7,24 +7,37 @@ import CommentCard from "./CommentCard";
 import CommentInput from "./CommentInput";
 export default function MainView(props) {
   const dispatch = useDispatch();
+
+  //store
   const info = useSelector(state => state.post.info);
   const user = useSelector(store => store.authentication.user);
   const comments = useSelector(state => state.post.info.data.comments);
+
+  const frames = {
+    rook: "/img/9csaYrM.png",
+    bishop: "/img/XAXA03P.png",
+    knight: "/img/Lwsg9sd.png",
+    pawn: "/img/f1qYFeh.png"
+  }
+
   function handleLike() {
     if (user && info.data.like.indexOf(user._id) !== -1)
       return;
     dispatch(a.likePost(props.id));
   }
+
   function handleDislike() {
     if (user && info.data.dislike.indexOf(user._id) !== -1)
       return;
     dispatch(a.dislikePost(props.id));
   }
+
   useEffect(() => {
     console.log(info);
     if (info.status === c.LOADING)
       dispatch(a.getPostById(props.id));
   }, [info])
+
   return (
     <div className="main-view show_flex">
       {
@@ -33,6 +46,7 @@ export default function MainView(props) {
           <>
             <div>
               <div className="main-view__post__avt">
+                <img src={frames[info.data.user.badge]} alt="" />
                 {info.data.user.name[0]}
               </div>
               <div className="main-view__post__action">
@@ -74,7 +88,9 @@ export default function MainView(props) {
               <div className="show_flex">
                 <span>Tác giả: </span>
                 &nbsp;
-                <label>{info.data.user.name}</label>
+                <label>
+                  {info.data.user.name}
+                </label>
                 &nbsp;
                 <span>vào {info.data.date}</span>
               </div>

@@ -80,14 +80,14 @@ export default function UpdateUserForm(props) {
             <div className="row">
               <input
                 type="checkbox"
-                checked={info.badge === "pawn"}
+                checked={info.badge === "rook"}
                 onChange={handleInputChange}
                 name="badge"
-                id="pawn"
-                value="pawn"
+                id="rook"
+                value="rook"
               />
-              <label htmlFor="pawn">Pawn</label>
-            </div >
+              <label htmlFor="knight">Knight</label>
+            </div>
             <div className="row">
               <input
                 type="checkbox"
@@ -110,6 +110,17 @@ export default function UpdateUserForm(props) {
               />
               <label htmlFor="bishop">Bishop</label>
             </div>
+            <div className="row">
+              <input
+                type="checkbox"
+                checked={info.badge === "pawn"}
+                onChange={handleInputChange}
+                name="badge"
+                id="pawn"
+                value="pawn"
+              />
+              <label htmlFor="pawn">Pawn</label>
+            </div >
           </div>
         </div>
         <div style={{ display: "flex" }}>

@@ -8,27 +8,27 @@ import TestCard from "../../components/Cards/TestCard";
 import Paginate from "../../components/Common/Paginate";
 function ListTestsPage(props) {
   const dispatch = useDispatch();
-  const [level, setLevel] = useState("");
+
   const tests = useSelector(state => state.test.tests);
   let status = useSelector(state => state.test.status);
   let totalPage = useSelector(state => state.test.totalPage);
-  let currentTest = useMemo(() => {
-    if (!tests)
-      return [];
-    if (level === "")
-      return tests;
-    let ctests = tests.filter((v) => v.level === level);
-    return ctests;
-  }, [level, tests]);
+
+  const [type, setType] = useState(
+    queryString.parse(props.location.search).type
+      ? queryString.parse(props.location.search).type
+      : ""
+  );
   const [query, setQuery] = useState({ ...queryString.parse(props.location.search), page: 1, pagesize: 10 });
-  function handleChangeLevel(lv) {
-    if (query.level === lv) {
+
+  function handleChangeType(t) {
+    if (query.type === t) {
       return;
     }
-    setLevel(lv);
-    setQuery({ ...query, level: lv, page: 1 });
+    setType(t);
+    setQuery({ ...query, type: t, page: 1 });
     dispatch({ type: "CHANGE_TEST_PAGE" });
   }
+
   function handleChangePage(page) {
     if (query.page === page) {
       return;
@@ -36,6 +36,7 @@ function ListTestsPage(props) {
     setQuery({ ...query, page: page });
     dispatch({ type: "CHANGE_TEST_PAGE" });
   }
+
   useEffect(() => {
     document.title = "Danh sách đề thi";
     window.scrollTo({
@@ -57,30 +58,25 @@ function ListTestsPage(props) {
                   <span>DANH SÁCH ĐỀ THI</span>
                   <div className="flex">
                     <button
-                      className={level === "" ? "active" : ""}
-                      onClick={() => handleChangeLevel("")}>
+                      className={type === "" ? "active" : ""}
+                      onClick={() => handleChangeType("")}>
                       Toàn bộ
                     </button>
                     <button
-                      className={level === "250-500" ? "active" : ""}
-                      onClick={() => handleChangeLevel("250-500")}>
-                      Level 250 - 500
+                      className={type === "reading" ? "active" : ""}
+                      onClick={() => handleChangeType("reading")}>
+                      Reading
                     </button>
                     <button
-                      className={level === "500-750" ? "active" : ""}
-                      onClick={() => handleChangeLevel("500-750")}>
-                      Level 500 - 750
-                    </button>
-                    <button
-                      className={level === "750-990" ? "active" : ""}
-                      onClick={() => handleChangeLevel("750-990")}>
-                      Level 750 - 990
+                      className={type === "listening" ? "active" : ""}
+                      onClick={() => handleChangeType("listening")}>
+                      Listening
                     </button>
                   </div>
                 </div>
                 <div className="list-tests">
                   {
-                    currentTest.map((v, i) =>
+                    tests.map((v, i) =>
                       <TestCard
                         key={i}
                         id={v._id}
