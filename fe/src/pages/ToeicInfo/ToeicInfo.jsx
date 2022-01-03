@@ -13,7 +13,7 @@ function ToeicInfoPage() {
     setCustomStyle(cStyle);
   }
   useEffect(() => {
-    document.title = "Thông tin Toeic"
+    document.title = "Thông tin IELTS"
   }, [])
   return (
     <React.Fragment>
@@ -23,7 +23,7 @@ function ToeicInfoPage() {
             className={customStyle.location === "block" ? "active" : ""}
             onClick={() => handleChangeTab("location")}
           >
-            Địa điểm thi Toeic
+            Địa điểm thi IELTS
           </button>
           <button
             className={customStyle.process === "block" ? "active" : ""}

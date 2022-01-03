@@ -58,7 +58,7 @@ function Header(props) {
               <a href="/thong-tin" className="dropdown-btn">Thông tin Ielts</a>
             </div>
             <div className="dropdown">
-              <a href="/forum" className="dropdown-btn">Diễn đàng</a>
+              <a href="/forum" className="dropdown-btn">Diễn đàn</a>
             </div>
             <div className="dropdown mobile-display">
               <button onClick={handleShowSidebar}>

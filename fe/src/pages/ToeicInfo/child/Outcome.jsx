@@ -1,15 +1,15 @@
 export default function ToeicOutcome(props) {
   return (
     <div className="toeic-outcome" style={{ display: props.display }}>
-      <h2 id="toeic-outcome">Nhận kết quả thi TOEIC</h2>
+      <h2 id="toeic-outcome">Nhận kết quả thi IELTS</h2>
       <p style={{ marginTop: "1em" }}>
-        Thời gian nhận kết quả thi TOEIC là <strong>5 ngày làm việc</strong> sau ngày thi (Hà Nội) và 7 ngày làm việc sau ngày thi (Đà Nẵng và TP. HCM), nghĩa là khoảng 10 đến 12 ngày thông thường.
+      Sau khi đăng ký thi tại một trong hai hội đồng thi IELTS là British Council và IDP bạn nên kiểm tra thông tin về thời gian nhận kết quả. Thông thường bạn sẽ nhận được kết quả thi IELTS <strong>trong vòng 13 ngày</strong> kể từ ngày dự thi. So với các kỳ thi khác như TOEIC, SAT hay TOEFL thì kết quả thi IELTS có khá sớm. Vì vậy bạn hãy yên tâm để hoàn thành xuất sắc bài thi của mình nhé.
       </p>
       <p style={{ marginTop: "1em" }}>
-        Bằng TOEIC có giá trị trong vòng <strong>02 năm kể từ ngày có kết quả. </strong>Trong thời gian đó, bạn có thể dùng nó để bổ sung hồ sơ tìm việc hoặc thậm chí là đi du học (ở một số nước và một số trường nhất định).
+      Với bảng điểm IELTS, sẽ có thời hạn <strong>trong vòng 2 năm.</strong>  Bạn hãy tận dụng thời gian này để nộp hồ sơ hay chứng chỉ đến nơi cần thiết. Luôn luôn đảm bảo rằng bảng điểm vẫn còn giá trị sử dụng. Trong một vài trường hợp khi bảng điểm của bạn hết hạn, bạn có thể xin ghi tạm điểm IELTS theo năng lực và gửi bổ sung bảng điểm thật sau đó.
       </p>
       <p style={{ marginTop: "1em" }}>
-        Sau thời gian 2 năm, bằng TOEIC sẽ không còn hiệu lực. Lúc này bạn có thể thi một lần nữa để được cấp chứng chỉ mới, nếu cảm thấy cần thiết.
+      Các tổ chức thường không chấp nhận bảng điểm quá thời hạn hai năm. Sau thời gian này, bạn sẽ phải cung cấp các bằng chứng để chứng minh bạn đảm bảo hoặc nâng cao kỹ năng tiếng Anh của mình tính từ sau ngày thi. 
       </p>
     </div>
   )

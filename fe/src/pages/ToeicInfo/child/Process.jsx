@@ -1,138 +1,126 @@
 export default function ToeicProcess(props) {
   return (
     <div className="toeic-procedures-process" style={{ display: props.display }}>
-      <h2 id="toeic-procedures">Thủ tục đăng ký thi TOEIC</h2>
+      <h2 id="toeic-procedures">Thủ tục đăng ký thi IELTS</h2>
       <img className="procedures-img" src="/img/dang_ky_va_du_thi.png" alt="" />
 
-      <h3 id="toeic-registration">Quy trình đăng ký dự thi online (Áp dụng cho các bạn thi tại Hà Nội, TP. Hồ Chí Minh và Đà Nẵng)</h3>
-      <p>
-        Từ ngày 10/09/2020, các bạn muốn thi tại Hà Nội, TP. Hồ Chí Minh và Đà Nẵng cần làm thủ tục đăng ký dự thi online trước khi đến hoàn thiện thủ tục tại các quầy đăng ký của IIG Việt Nam.
-      </p>
-      <p>Các bạn thực hiện đầy đủ các bước hướng dẫn như bên dưới nhé.</p>
-      <p>
-        <b>Bước 1: </b> Bạn truy cập trang <a href="https://online.iigvietnam.com/">Đăng ký dự thi online của IIG</a>
-        . Chọn “Đăng ký” tài khoản theo 1 trong 2 cách sau:
-      </p>
+      <h3 id="toeic-registration">Quy trình đăng ký dự thi </h3>
+      <h4>1 Hướng dẫn đăng ký thi IELTS tại British Council (BC)</h4>
       <ul>
         <li>
-          Cách 1: Bạn chọn “Đăng ký” và làm theo hướng dẫn trên trang để kích hoạt tài khoản đăng ký. Sau đó bạn tiến hành đăng nhập tài khoản trên trang.
+        <strong>Bước 1:</strong> Truy cập đường link:<a href="https://www.britishcouncil.vn/thi/ielts/book-test" style={{color:"#00949e"}}>https://www.britishcouncil.vn/thi/ielts/book-test</a> 
         </li>
         <li>
-          Cách 2: Bạn có thể đăng nhập tài khoản qua Google, nhập email và mật khẩu Google để truy cập.
+        <b>Bước 2:</b> Chọn hình thức dự thi trên giấy hay trên máy tính
+        </li>
+        <li>
+        <b>Bước 3:</b> Điền vào các mục mà BC yêu cầu, rồi chọn thời gian và ngày thi. Sau đó, chuyến khoản và thanh toán online với các loại thẻ Visa hoặc Master theo yêu cầu.
         </li>
       </ul>
-      <p>
-        <b>Bước 2: </b> Sau khi đã đăng nhập thành công, đưa con trỏ chuột tới mục “Đăng ký thi” và lựa chọn bài thi muốn đăng ký dự thi. → Màn hình hiện trang “Thông tin đăng ký” → bạn điền các thông tin cá nhân theo form đăng ký.
-      </p>
+      <h4>2 Cách thức đăng ký thi IELTS tại IDP Việt Nam</h4>
       <ul>
         <li>
-          Lưu ý rằng trong form, IIG sẽ yêu cầu bạn tải lên file ảnh chụp giấy tờ tùy thân (CMND, CCCD, Hộ chiếu), ảnh chụp thẻ 3x4 đúng tỷ lệ và ảnh chụp mặt trước thẻ HS, SV (nếu bạn đang là học sinh, sinh viên). Ảnh chụp cần đảm bảo cân đối, rõ nét và đúng định dạng file (.jpg).
+        <strong>Bước 1:</strong> Truy cập đường link:<a href=" https://my.ieltsessentials.com/Home" style={{color:"#00949e"}}> https://my.ieltsessentials.com/Home</a> 
+        </li>
+        <li>
+        <b>Bước 2:</b> Tạo tài khoản thông tin cá nhân.
+        </li>
+        <li>
+        <b>Bước 3:</b> Kiểm tra và chọn ngày thi IELTS phù hợp.
+        </li>
+        <li>
+        <b>Bước 4:</b> Điền đầy đủ các thông tin cá nhân theo hướng dẫn và thanh toán lệ phí thi bằng thẻ tín dụng hoặc chuyển khoản qua tài khoản ngân hàng của IDP.
         </li>
       </ul>
+      <h3 id="toeic-fee">Cách thức chuyển khoản khi đăng ký thi tại Hội đồng Anh</h3>
+      <h4>➤ Thông tin chuyển khoản của British Council:</h4>
       <p>
-        Sau khi hoàn thiện form, bạn tick vào ô “Tôi xin cam kết” và chọn “Đăng ký” để nộp hồ sơ → Màn hình hiển thị thông báo kết quả đăng ký “Chúc mừng thí sinh đã hoàn thành hồ sơ đăng ký dự thi”.
-      </p>
-      <p>
-        Ngoài ra, hệ thống cũng sẽ trả về email mà bạn đã đăng ký thi với kết quả đăng ký tương tự. Bạn có thể kiểm tra Email để xem các thông tin đăng ký dự thi.
-      </p>
-      <p>
-        <b>Bước 3: </b> Bạn tiến hành in phiếu dự thi. Bạn có thể in phiếu dự thi theo các cách sau:
-      </p>
-      <ol>
-        <li>
-          In ngay sau khi hoàn thành việc đăng ký online.
-        </li>
-        <li>
-          In phiếu dự thi sau qua email bằng cách click vào nút “In phiếu dự thi” trong nội dung email thông báo của IIG.
-        </li>
-        <li>
-          In tại mục Lịch sử hồ sơ đăng ký dự thi. Bạn ấn vào Tên đăng nhập của mình trên website IIG → Chọn “Thành viên quản lý” → chọn “Lịch sử hồ sơ đăng ký dự thi” → click vào nút “In phiếu” → sau khi cửa sổ mới hiện ra, bạn chọn “In phiếu dự thi”.
-        </li>
-      </ol>
-      <p>
-        Sau khi hoàn thành 3 bước trên, bạn chuẩn bị đầy đủ giấy tờ hợp lệ và có mặt 15 phút trước khung giờ đã hẹn trong form đăng ký online tại quầy thủ tục của IIG để người phụ trách kiểm tra tính hợp lệ của các giấy tờ bạn được yêu cầu mang theo. Bạn xem chi tiết giấy tờ cần chuẩn bị <a href="#toeic-preparation">tại đây</a>.
-      </p>
-      <h3 id="toeic-fee">Lệ phí thi TOEIC</h3>
-      <p>
-        <b>Lệ phí thi TOEIC tại IIG Việt Nam</b> (cập nhật mới nhất vào tháng 11/2020) sẽ phân chia theo từng đối tượng thi như sau:
+        Các bạn chuyển khoản lệ phí thi vào tài khoản ngân hàng của Hội đồng Anh:
       </p>
       <ul>
-        <li>Đối với người đi làm, lệ phí thi TOEIC là <b>1.390.000 VNĐ</b></li>
-        <li>Đối với học sinh, sinh viên, lệ phí thi TOEIC là <b>990.000 VNĐ</b></li>
+        <li><b>Tên tài khoản:</b> BRITISH COUNCIL (VIETNAM) LLC</li>
+        <li><b>Số tài khoản:</b> 0201912-008</li>
+        <li><b>Ngân hàng: </b>Citibank - Chi nhánh Hà Nội (40 Cát Linh, Quận Đống Đa, Hà Nội)</li>
+        <li><b>Nội dung chuyển khoản tại Hà Nội:</b> HNEX-Chuyển lệ phí thi IELTS thi ngày...</li>
+        <li><b>Nội dung chuyển khoản tại TP. Hồ Chí Minh:</b> HCMEX-Chuyển lệ phí thi IELTS thi ngày...</li>
       </ul>
-
-      <h3 id="toeic-preparation">Cần chuẩn bị những gì trước khi đăng ký thi TOEIC?</h3>
-      <p>Các bạn phải tự đến đăng ký dự thi TOEIC, không thể nhờ bố mẹ hoặc bạn bè đăng ký hộ.</p>
-      <p><b>Khi làm thủ tục đăng ký thi TOEIC hoặc hoàn thiện hồ sơ đăng ký dự thi online thì bạn cần mang theo những giấy tờ sau:</b></p>
-      <ol>
-        <li>
-          <b>Giấy Chứng Minh Nhân Dân (CMND) / thẻ Căn cước Công dân (CCCD) hoặc Hộ Chiếu (Passport)</b><br />
-          Lưu ý là giấy tờ phải còn nguyên hiện trạng, chưa từng bị cắt viền ép hay ép thêm lớp ép dẻo/ ép lụa, không rách/ mờ thông tin/ ảnh, không bong góc và dấu giáp lai vẫn còn rõ ràng. Nếu không bạn phải về làm lại CMND mới thì mới được đăng ký thi.<br />
-          Nếu muốn chắc ăn thì bạn có thể dùng hộ chiếu để đăng ký thi. TUY NHIÊN, nếu dùng hộ chiếu để đăng ký, thì khi đi thi cần mang cả CMND lẫn hộ chiếu để làm thủ tục vào phòng thi.<br />
-          Trong trường hợp bạn dùng thẻ CCCD, bạn cần mang theo cả CMND cũ hoặc sổ Hộ khẩu thể hiện số CMND cũ để làm thủ tục.
-        </li>
-        <li>
-          <b>3 tấm ảnh 3x4</b> chụp không quá 3 tháng, mặt sau mỗi ảnh ghi rõ Họ tên, ngày sinh, số CMND / thẻ CCCD / Hộ Chiếu.<br />
-          Lưu ý bắt buộc phải là <b>ảnh 3x4 chuẩn quốc tế</b> (to hơn chuẩn Việt Nam và có nền trắng). Ảnh chụp có thời gian không quá 3 tháng. Ảnh không được can thiệp kỹ thuật số và giống với ảnh đã đăng tải khi đăng ký trực tuyến (đối với trường hợp bạn đăng ký thi online).
-        </li>
-        <li>
-          <b>Phiếu đăng ký dự thi (liên 1 và liên 2) </b>bản in (dành cho những bạn đăng ký dự thi online) để mang đến địa điểm đăng ký hoàn thiện hồ sơ đăng ký dự thi.
-        </li>
-        <li>
-          <b>Thẻ học sinh, sinh viên hệ chính quy </b>với các bạn đang là học sinh, sinh viên hệ chính quy. Không áp dụng cho học viên Cao học, nghiên cứu sinh, sinh viên các hệ không chính quy và người đi làm. Yêu cầu thông tin trên thẻ HS, SV phải rõ ràng thể hiện đủ thông tin, ảnh của thí sinh và có dấu của nhà trường: không có dấu hiệu tẩy xóa, thay thế hoặc chỉnh sửa các thông tin như: ảnh, sửa họ, tên đệm, tên, ngày sinh, lớp, niên khóa, hạn sử dụng,...
-        </li>
-      </ol>
-      <h3 id="toeic-schedule">Xem lịch thi TOEIC và chọn ngày thi như thế nào?</h3>
+      <h4>➤ Thông tin chuyển khoản ngân hàng của IDP:</h4>
       <p>
-        Về lịch thi TOEIC, các bạn nên liên hệ với đơn vị tổ chức thi sẽ có lịch thi cụ thể và chính xác nhất. Tốt nhất là bạn nên gọi điện hoặc đến trực tiếp trung tâm để có thể được báo về lịch thi TOEIC cập nhật mới nhất và đúng nhất.
-      </p>
-      <p>
-        Bạn có thể truy cập website www.iigvietnam.com để xem lịch thi tại Hà Nội, TP. Hồ Chí Minh và Đà Nẵng nếu muốn thi tại trung tâm IIG ở 3 thành phố này nhé.
-      </p>
-      <p>
-        Để đảm bảo thi được đúng ngày mình chọn, bạn nên đăng ký thi trước ngày dự tính thi ít nhất là 2 tuần nha, vì các địa điểm thi đều có rất nhiều thí sinh mới đăng ký mỗi ngày.
-      </p>
-      <h3 id="toeic-receiving">Bạn sẽ nhận được gì sau khi đăng ký thi?</h3>
-      <ol>
-        <li><b>Phiếu đăng ký</b> dự thi TOEIC</li>
-        <li>Cuốn <b>Hướng dẫn dự thi TOEIC</b></li>
-      </ol>
-      <h3 id="toeic-modification">Chuyển thời gian thi/Hủy thi TOEIC</h3>
-      <p>
-        Quy định về <b>chuyển thời gian thi và hủy thi </b>thì khác nhau giữa các đơn vị tổ chức thi. Riêng đối với <b>IIG </b>thì:
+      + Đối với IDP tại Hà Nội:
       </p>
       <ul>
-        <li>Bạn chỉ được đổi lịch thi tối đa 01 lần.</li>
-        <li>Thời hạn chuyển đổi thời gian thi và hủy thi tối thiểu là 05 ngày làm việc trước ngày thi.</li>
+        <li><b>Tên tài khoản: </b>IDP Education (Vietnam) Co., Ltd</li>
+        <li><b>Số tài khoản:</b> 3238033(VND); 3217772(USD)</li>
+        <li><b>Ngân hàng: </b> ANZ Bank – Chi nhánh Hà Nội</li>
+        <li><b>Địa chỉ:</b> 14 Lê Thái Tổ, Hoàn Kiếm, Hà Nội</li>
+      </ul>
+      <p>
+      + Với IDP tại TP. Hồ Chí Minh
+      </p>
+      <ul>
+        <li><b>Tên tài khoản: </b> Công ty TNHH giáo dục IDP (Việt Nam)</li>
+        <li><b>Số tài khoản:</b> 007.1000.891559</li>
+        <li><b>Ngân hàng: </b> Ngân Hàng Ngoại Thương – Chi nhánh TP. HCM</li>
+        <li><b>Địa chỉ:</b> 10 Đại lộ Võ Văn Kiệt , Q.1, HCM</li>
+      </ul>
+      <h3 id="toeic-preparation"> Được mang gì vào phòng thi IELTS??</h3>
+      <ol>
+        <li>
+          <b>Thí sinh phải mang theo CMND/CCCD hoặc hộ chiếu bản chính mới được vào phòng thi</b><br />
+        </li>
+        <li>
+        Thí sinh chỉ được mang theo vào phòng thi CMND/CCCD, hộ chiếu hoặc nước lọc đựng bởi chai nhựa trong suốt. Những vật dụng như bút chì, bút bi và tẩy sẽ được phát trong phòng thi.
+        </li>
+        <li>Thí sinh không được mang theo hành lý cá nhân hay bất kì một vật dụng nào khác vào trong phòng thi.</li>
+      </ol>
+      <h3 id="toeic-schedule">Lịch thi IELTS 2021</h3>
+      <div>
+        <img src="https://i.ibb.co/DYgWL9q/Capture.png" alt="" />
+      </div>
+      <p>Thi trên máy tính</p>
+      <p>Tại Hà Nội:</p>
+      <p>– 09.00 các ngày từ thứ Ba đến thứ Sáu hàng tuần</p>
+      <p>– 09.00 và 14.00 các ngày thứ 7 và Chủ nhật hàng tuần</p>
+      <p>Thi trên máy tính</p>
+      <p>Tại TP. Hồ Chí Minh:</p>
+      <p>– 09.00 các ngày từ thứ Hai đến thứ Sáu hàng tuần</p>
+      <p>– 09.00 và 13.30 các ngày thứ 7 và Chủ nhật hàng tuần</p>
+      <h3 id="toeic-modification">Chuyển thời gian thi/Hủy thi IELTS</h3>
+      <h4>
+      Thí sinh có thể yêu cầu đổi ngày thi IELTS theo các thời điểm sau:
+      </h4>
+      <ul>
+        <li>Nếu thí sinh yêu cầu đổi ngày thi trong vòng hơn hoặc bằng năm tuần trước ngày thi đã đăng ký (tính từ ngày thi kỹ năng đầu tiên): thí sinh được đổi ngày thi miễn phí</li>
+        <li>Nếu thí sinh yêu cầu đổi ngày thi trong vòng dưới năm tuần trước ngày thi đã đăng ký (tính từ ngày thi kỹ năng đầu tiên): thí sinh  nộp thêm 25% lệ phí thi cho thủ tục hành chính*.</li>
         <li>Lệ phí chuyển thời gian thi là 50% lệ phí thi.</li>
-        <li>Nếu bạn làm thủ tục hủy thi đúng hạn sẽ được hoàn trả 50% lệ phí thi.</li>
-        <li>Bạn có thể viết giấy ủy quyền theo mẫu và ủy quyền cho người khác đến làm thủ tục chuyển đổi/hủy ngày thi. Người được ủy quyền cần mang theo CMND của bạn và người được ủy quyền, giấy ủy quyền, giấy đăng ký dự thi để đến IIG làm thủ tục nhé.</li>
+        <li>Nếu thí sinh yêu cầu đổi ngày thi trong vòng dưới ba ngày trước ngày thi đã đăng ký (tính từ ngày thi kỹ năng đầu tiên): yêu cầu chuyển ngày thi sẽ không được chấp nhận, ngoại trừ các trường hợp ngoại lệ bên dưới.</li>
+        <li>Thí sinh cần đăng ký ngày thi mới không quá ba tháng so với ngày thi ban đầu. Nếu thí sinh không thể tham dự ngày thi mới, thí sinh sẽ không thể tiếp tục yêu cầu chuyển ngày thi hoặc hoàn trả lệ phí thi.</li>
       </ul>
-      <h3 id="toeic-go-contest">Khi đi thi</h3>
+      <h4>
+      Hủy thi IELTS
+      </h4>
+      <p>Thí sinh có thể yêu cầu hủy thi theo các thời điểm sau:</p>
+      <ul>
+        <li>Nếu thí sinh yêu cầu hủy thi trong vòng hơn hoặc bằng năm tuần trước ngày thi đã đăng ký (tính từ ngày thi kỹ năng đầu tiên): thí sinh sẽ nhận được hoàn 75% lệ phí thi*.</li>
+        <li>Nếu thí sinh yêu cầu hủy thi trong vòng dưới năm tuần trước ngày thi đã đăng ký (tính từ ngày thi kỹ năng đầu tiên): thí sinh sẽ không được hoàn phí, ngoại trừ các trường hợp ngoại lệ bên dưới.</li>
+        <li>Xin lưu ý quy trình hoàn lệ phí thi cho thí sinh có thể kéo dài đến sáu tuần.</li>
+      </ul>
+      <h3 id="toeic-go-contest">Đi thi IELTS cần mang những gì?</h3>
       <ul>
         <li>
-          Bạn cần mang theo:
           <ul>
-            <li>Phiếu đăng ký dự thi TOEIC.</li>
-            <li>CMND bản gốc nếu bạn đăng ký thi bằng CMND, hoặc cả CMND lẫn hộ chiếu nếu bạn dùng hộ chiếu để đăng ký thi.</li>
+            <li><b>Giấy tờ tùy thân</b> Đây là việc cực kì quan trọng; vì hội đồng thi sẽ không cho bạn tham dự kì thi nếu không mang theo giấy tờ. Bạn chỉ cần đem một loại giấy tờ (chứng minh thư HOẶC hộ chiếu) mà bạn đã dùng để đăng kí dự thi.</li>
+            <li><b>Trang phục thoải mái, gọn gàng</b>Tại hội đồng thi, bạn sẽ được chụp hình để làm bằng, nên nếu muốn hình trên bằng đẹp, bạn có thể cân nhắc việc mặc đồ sáng một chút.</li>
+            <li><b>Áo khoác</b>Phòng thi được mở máy lạnh xuyên suốt nên khá lạnh nếu bạn không mang theo áo khoác, việc bị lạnh sẽ ảnh hưởng đến khả năng làm bài thi.</li>
+            <li><b>Nước suối trong chai trong suốt</b>Uống nước có thể giúp bạn giữ bình tĩnh, vì vậy, bạn có thể mang theo bên mình chai nước cho mình, nhớ tháo nhãn ra nha!</li>
+            <li><b>Đồng hồ</b>ạn có thể mang theo đồng hồ để kiểm soát thời gian để tránh việc thiếu hụt thời gian. Tuy nhiên, hãy mang đồng hồ cơ thay vì đồng hồ điện tử.</li>
           </ul>
         </li>
-        <li>Bạn <b>KHÔNG</b> được mang theo bất cứ vật dụng cá nhân nào như viết chì, viết máy, đồng hồ, nước uống, giấy nháp vào phòng thi. Địa điểm tổ chức thi sẽ phát viết chì và gôm tẩy cho từng thí sinh.</li>
-      </ul>
-      <h3 id="toeic-do-contest">Khi làm bài thi + Answer Sheet TOEIC</h3>
-      <ul>
-        <li>
-          Trong quá trình làm bài, bạn chọn đáp án bằng cách tô đậm vào các ô tròn trong khung Listening Section và Reading Section trong <b>Answer Sheet TOEIC - Phiếu trả lời</b>. Để chọn đáp án, bạn dùng viết chì để tô kín hoàn toàn vào vòng tròn A, B, C, D tương ứng.<br />
-          Mẫu Answer Sheet bạn có thể xem ở ngay dưới đây:<br />
-          <img className="answer-sheet-img" src="/img/answer_sheet_toeic.png" alt="" /><br />
-          Ngoài ra, bạn cũng có thể thấy trong hình trên có các khung đánh số 10, 11, 12. Các khung này liên quan đến thủ tục phòng thi và bạn sẽ được các giám thị hướng dẫn tô vào trước khi làm bài.
-        </li>
-        <li>
-          Tuy nhiên, lưu ý là bạn <b>KHÔNG</b> được viết bất cứ thứ gì vào trong tập đề thi TOEIC, cho dù là dùng viết chì.
-        </li>
-        <li>
-          Hãy lắng nghe cán bộ gác thi và luôn ghi nhớ những nội quy trong phòng thi, đừng để mắc những lỗi nhỏ nhặt như trên làm uổng phí công sức luyện thi TOEIC của mình bạn nhé!
-        </li>
+        <li><b>Lưu ý:</b></li>
+        <li>Bạn <b>KHÔNG</b>  được phép mang theo bất kỳ vật dụng nào khác vào phòng thi.</li>
+        <li>Tắt điện thoại di động và các thiết bị điện tử khác. Các tư trang cá nhân sẽ được yêu cầu để ngoài phòng thi.</li>
+        <li>Đặc biệt, bạn nên sớm để bạn có đủ thời gian kiểm tra và di chuyển qua tất cả các thủ tục an ninh cần thiết.</li>
+        <li>Lắng nghe cẩn thận các hướng dẫn của giám sát viên kiểm tra. Nếu bạn không thể nghe hoặc không chắc chắn, hãy giơ tay và người giám sát sẽ hỗ trợ bạn.</li>
       </ul>
     </div>
   )
